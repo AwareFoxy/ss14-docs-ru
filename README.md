@@ -2,7 +2,7 @@
 
 This is the `mdbook`-based developer documentation for all Space Wizards projects, including Robust Toolbox, Space Station 14, the SS14 launcher, etc. These docs cover many topics and can be potentially very useful for mappers, spriters, active contributors & prospective contributors, people who want to use our engine for their own projects, fork developers, and so on.
 
-The site is currently hosted at [https://docs.spacestation14.com](https://docs.spacestation14.com).
+The site is currently hosted at [[http://documentationss14.ru](http://documentationss14.ru/)
 
 Benefits of the current docs site infrastructure include:
 - First-class git support, open source and actually editable by everyone
