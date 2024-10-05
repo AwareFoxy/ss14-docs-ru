@@ -1,9 +1,9 @@
 [book]
 authors = ["Space Wizards Contributors"]
-language = "en"
+language = "ru"
 multilingual = false
 src = "src"
-title = "Space Wizards Development Wiki"
+title = "Русское Дев-Вики SS14"
 description = "Tutorial & reference for all Space Wizards Federation projects, including the Robust Toolbox engine and its flagship open source game, Space Station 14."
 
 [preprocessor.mermaid]
@@ -24,7 +24,7 @@ default-theme = "navy"
 preferred-dark-theme = "navy"
 
 git-repository-url = "https://github.com/space-wizards/space-station-14"
-edit-url-template = "https://github.com/space-wizards/docs/blob/master/{path}"
+edit-url-template = "https://github.com/AwareFoxy/ss14-docs-ru"
 
 mathjax-support = true
 curly-quotes = true
