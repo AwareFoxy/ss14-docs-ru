@@ -9,7 +9,7 @@
 Если вы хотите модифицировать свой сервер и добавить в него собственное содержимое. Вам понадобится [соответствующая среда разработки](./setting-up-a-development-environment.md) с вашими изменениями, а затем [сбилдить вашу собственную сборку](#level-2-server-with-custom-code).
 ```
 
-1. Скачайте и установите [.NET 8 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0). Вам нужен только «x64» в разделе «run console apps», а не «hosting bundle» со страницы загрузок.
+1. Скачайте и установите [.NET 8 Runtime](https://dotnet.microsoft.com/ru-us/download/dotnet/8.0). Вам нужен только «x64» в разделе «run console apps», а не «hosting bundle» со страницы загрузок.
 2. Скачайте последнюю версию сервера с [нашей страницы сборок](https://wizards.cdn.spacestation14.com/fork/wizards), для вашей операционной системы. Если вы ищете другой форк, спросите его, есть ли у него страница с готовой сборкой сервера. В противном случае обратитесь к разделу [Custom Code](#level-2-server-with-custom-code) ниже.
 3. Распакуйте это в какую-нибудь директорию.
 4. Запустите `run_server.bat` (Windows) или `Robust.Server` [через терминал на macOS/Linux](#running-the-server-on-macos-or-linux))
@@ -114,7 +114,7 @@ lobbyenabled = true
 
 Разумеется, он не будет делать автоматические перезагрузки (в случае чего) или обновления, как это делает Watchdog. Он также не будет публично публиковать ваш сервер на хабе, так как публикация в хабе по умолчанию отключена. Если вы хотите, чтобы ваш сервер был опубликован на хабе, прочтите статью `Public Hub Server` ниже.
 
-Для других сервисов, таких как `SS14.Watchdog`, вам также потребуется [ASP .NET Core 8 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (входит в .NET 8 SDK).
+Для других сервисов, таких как `SS14.Watchdog`, вам также потребуется [ASP .NET Core 8 Runtime](https://dotnet.microsoft.com/ru-us/download/dotnet/8.0) (входит в .NET 8 SDK).
 
 ### Установка правил
 По умолчанию сервер поставляется без правил. Чтобы установить пользовательские правила для своего сервера, выполните следующие действия:
@@ -180,7 +180,7 @@ ROBUST_NUMERICS_AVX: true
 [`SS14.Watchdog`](https://github.com/space-wizards/SS14.Watchdog/) (кодовое имя Ian) - это наш помощник для хостинга, похожий на TGS для BYOND (но гораздо более простой на данный момент). Он обрабатывает автообновления, мониторинг, автоматические перезагрузки и администрирование. Мы рекомендуем вам использовать его для правильного развертывания.
 
 ### Установка
-[`Ссылайтесь на это`](https://docs.spacestation14.com/en/server-hosting/setting-up-ss14-watchdog.html) для получения инструкций по сборке и настройке Watchdog.
+[`Ссылайтесь на это`](https://docs.spacestation14.com/ru/server-hosting/setting-up-ss14-watchdog.html) для получения инструкций по сборке и настройке Watchdog.
 
 ### Конфигурация сборки сервера
 
@@ -350,7 +350,7 @@ dotnet publish -c Release SS14.Watchdog -o test
 Все важные ссылки на этой странице в одном удобном месте.
 * [Помощь в конфигурации сервера](../tips/config-file-reference.md)
 * [.NET 8 Runtime](https://dotnet.microsoft.com/download) (Также входит в полный .NET 8 SDK)
-* [ASP.NET Core 8 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (Также включено в полный .NET 8 SDK)
+* [ASP.NET Core 8 Runtime](https://dotnet.microsoft.com/ru-us/download/dotnet/8.0) (Также включено в полный .NET 8 SDK)
 * [SS14.Watchdog](https://github.com/space-wizards/SS14.Watchdog/)
 * [Официальные сборки](https://central.spacestation14.io/builds/wizards/builds.html)
 * [Референс инфраструктуры Wizard's Den](../../community/infrastructure-reference/wizards-den-infrastructure.md) (спецификации сервера)

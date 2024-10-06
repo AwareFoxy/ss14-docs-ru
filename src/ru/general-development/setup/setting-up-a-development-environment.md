@@ -8,7 +8,7 @@
   * ARM (M1) Пользователи Mac: Вы должны убедиться, что установили x64 .NET, **не** ARM .NET. В настоящее время движок не работает на Mac ARM, поэтому рекомендуется использовать x64 через эмуляцию Rosetta 2. 
 * Желательно наличие IDE, чтобы разработка не была мучительной (все варианты бесплатны, если не указано иное):
   * Для **Windows**, [Visual Studio 2022 **Community**](https://www.visualstudio.com/). Для минимальной установки (О боже, какой он большой) вам понадобится .NET desktop, компилятор C#, поддержка C#, менеджер пакетов NuGet, MSBuild и .NET 8 SDK или что-то в этом роде.
-  * Для **macOS** - [Visual Studio for Mac](https://docs.microsoft.com/en-us/visualstudio/mac/).
+  * Для **macOS** - [Visual Studio for Mac](https://docs.microsoft.com/ru-us/visualstudio/mac/).
   * Для **всех платформ**, (НЕ БЕСПЛАТНО) [Rider](https://www.jetbrains.com/rider/) - одна из лучших доступных IDE, и многие разработчики предпочитают ее Visual Studio. Студенты колледжей/университетов(в основном европейских и американских) могут получить бесплатную образовательную лицензию, даже если они не изучают информатику.
   * Для **всех платформ**, [Visual Studio Code](https://code.visualstudio.com/) с расширением C#. Обычно уступает полноценным IDE, таким как обычная Visual Studio, но некоторым опытным программистам нравится минимализм.
     * **Эксклюзивно для VSCode/VSCodium**: вы можете установить расширение [Robust YAML](https://marketplace.visualstudio.com/items?itemName=slava0135.robust-yaml), созданное нашим сообществом, для улучшения работы Robust Toolbox с YAML поверх расширения [YAML Language Support](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
