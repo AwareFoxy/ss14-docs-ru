@@ -16,11 +16,11 @@ General Development
 
 ----------------------
 
-- [Setup](ru/general-development/setup.md)
-  - [How do I code?](ru/general-development/setup/howdoicode.md)
-  - [Setting up a Development Environment](ru/general-development/setup/setting-up-a-development-environment.md)
-  - [Git for the SS14 Developer](ru/general-development/setup/git-for-the-ss14-developer.md)
-  - [Server Hosting Tutorial](ru/general-development/setup/server-hosting-tutorial.md)
+- [Настройка](ru/general-development/setup.md)
+  - [Как мне кодить?](ru/general-development/setup/howdoicode.md)
+  - [Настройка среды разработки](ru/general-development/setup/setting-up-a-development-environment.md)
+  - [Гит для игрока SS14](ru/general-development/setup/git-for-the-ss14-developer.md)
+  - [Хостинг своего сервера](ru/general-development/setup/server-hosting-tutorial.md)
 - [Codebase Info](ru/general-development/codebase-info.md)
   - [Conventions](ru/general-development/codebase-info/conventions.md)
   - [Pull Request Guidelines](ru/general-development/codebase-info/pull-request-guidelines.md)
@@ -46,13 +46,13 @@ SS14 By Example
 
 ----------------------
 
-- [Introduction to SS14 By Example](ru/ss14-by-example/introduction-to-ss14-by-example.md)
-- [Adding a Simple Bikehorn](ru/ss14-by-example/adding-a-simple-bikehorn.md)
-- [Making a Sprite Dynamic](ru/ss14-by-example/making-a-sprite-dynamic.md)
-  - [Porting Appearance Visualizers](ru/ss14-by-example/making-a-sprite-dynamic/porting-appearance-visualizers.md)
-- [Basic Networking and You](ru/ss14-by-example/basic-networking-and-you.md)
-- [Fluent and Localization](ru/ss14-by-example/fluent-and-localization.md)
-- [UI Survival Guide](ru/ss14-by-example/ui-survival-guide.md)
+- [Введение в SS14 на примерах](ru/ss14-by-example/introduction-to-ss14-by-example.md)
+- [Добавляем простой хонкающий гудок](ru/ss14-by-example/adding-a-simple-bikehorn.md)
+- [Делаем спрайт динамическим](ru/ss14-by-example/making-a-sprite-dynamic.md)
+  - [Перенос визуализаторов внешности](ru/ss14-by-example/making-a-sprite-dynamic/porting-appearance-visualizers.md)
+- [Основы работы в сети и вы](ru/ss14-by-example/basic-networking-and-you.md)
+- [Fluent и локализация](ru/ss14-by-example/fluent-and-localization.md)
+- [Руководство по выживанию в UI](ru/ss14-by-example/ui-survival-guide.md)
 
 
 Robust Toolbox

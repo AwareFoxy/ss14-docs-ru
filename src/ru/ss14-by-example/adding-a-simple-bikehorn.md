@@ -1,50 +1,50 @@
-# Adding a Simple Bike Horn
+# Добавление Простого Велосипедного Гудка
 
 {{#template ../templates/outdated.md}}
 
-This tutorial goes over the **entity component system** system and several other key topics in the SS14 codebase by demonstrating how one would implement a clown horn from scratch. You can try copying the steps yourselves, or you can just read along.
+В этом руководстве объясняется система **entity component system** (ECS) и другие ключевые темы кодовой базы SS14 на примере реализации клоунского гудка с нуля. Вы можете следовать шагам сами или просто ознакомиться с материалом.
 
-## Entities, components, and systems
+## Сущности, компоненты и системы
 
-While Space Station 14 is written in C#, an object-oriented programming language, it uses a different data model to represent items in game. This data model is called the *entity component system* (ECS). (*Why do we do this? See [ECS](../robust-toolbox/ecs.md)*)
+Хотя Space Station 14 написана на языке программирования C#, который является объектно-ориентированным, для представления игровых объектов используется другая модель данных, называемая *entity component system* (ECS). (*Почему мы используем ECS? См. [ECS](../robust-toolbox/ecs.md)*)
 
-### Entities
+### Сущности
 
-Each item in game is represented by an *entity*. Players, bananas, stun batons, are all represented by entities. An entity is represented by an integer. No two entities share the same integer representation.
+Каждый объект в игре представлен *сущностью*. Игроки, бананы, электрошокеры — всё это сущности. Каждая сущность представлена целым числом, и у двух сущностей не может быть одинакового числа.
 
-By themselves, entities only distinguish one item from another. Without any components, an entity has no behavior.
+Сами по себе сущности только идентифицируют объекты и не имеют поведения, если у них нет компонентов.
 
-### Components
+### Компоненты
 
-*Components* have two primary functions:
+*Компоненты* выполняют две основные функции:
 
-1. **Label specific entities as having specific behavior.** For example, in one particular game, the entity represented by the integer 37629 contains a `NukeComponent` and a `ActivatableUIComponent`. This means that this entity behaves like a nuke, and also has a user interface that can be raised by activating it.
+1. **Отмечают конкретные сущности для придания им специфического поведения.** Например, в одной игре сущность с числом 37629 содержит компоненты `NukeComponent` и `ActivatableUIComponent`, что означает, что она ведёт себя как ядерная бомба с возможностью открытия пользовательского интерфейса.
 
-2. **Store data required to process its behavior.** For example, a `NukeComponent` may have a data field `Timer` that represents how much time is left until the nuke detonates.
+2. **Хранят данные, необходимые для обработки поведения.** Например, у `NukeComponent` может быть поле `Timer`, показывающее, сколько времени осталось до взрыва.
 
-Still, components do not contain any logic for processing this behavior. Behaviors are implemented in entity systems.
+Тем не менее, компоненты не содержат логику для обработки поведения. Поведение реализуется через системы сущностей.
 
-### Systems
+### Системы
 
-An *entity system* (often abbreviated to "system") contains logic that implements behaviors for specific components. While there may be multiple entities with `NukeComponent` in one game, there is only one `NukeSystem`. The single `NukeSystem` is responsible for processing all entities with `NukeComponent`.
+*Система сущностей* (часто сокращённо "система") содержит логику, реализующую поведение для конкретных компонентов. Например, в игре может быть несколько сущностей с `NukeComponent`, но только одна система `NukeSystem`, которая обрабатывает все такие сущности.
 
-Entity systems implement behavior by defining *event handlers* or by implementing a per-tick *update* method.
+Системы сущностей реализуют поведение через определение *обработчиков событий* или методом *обновления* для каждого тика.
 
-As an another example, consider the `FoodComponent`. A programmer might make `EatingSystem` to handle eating food. `EatingSystem` listens to the `OnUseInHand` event - whenever `OnUseInHand` is heard/triggered, `EatingSystem` checks if there is a `FoodComponent` in the object that was used. If there is, then it lowers the value of `nutritionLeft` and plays a munching sound.
+Пример: `FoodComponent` и система `EatingSystem`, которая отвечает за поедание пищи. Когда событие `OnUseInHand` срабатывает, `EatingSystem` проверяет наличие компонента `FoodComponent` в объекте, который был использован. Если компонент есть, система уменьшает значение `nutritionLeft` и проигрывает звук поедания.
 
-That's the jist of ECS. If you're interested in learning more about it, then check out [Your mind on ECS](../robust-toolbox/ecs.md). The ECS approach really is powerful and allows us to avoid spaghetti code, despite the complexity of SS14.
+Это основные принципы ECS. Если хотите узнать больше, загляните в [Your mind on ECS](../robust-toolbox/ecs.md). Архитектура ECS действительно мощна и помогает избегать "спагетти-кода", несмотря на сложность SS14.
 
 ```admonish info
-You don't have to perfectly understand the ECS architecture at first. It can be daunting for both new programmers and those used to traditional OOP. However, the overall 'feel' and advantages of the architecture should become clear as you use it more.
+Не обязательно сразу досконально понять архитектуру ECS. Это может быть сложно как для новичков, так и для опытных программистов. Однако по мере использования этой архитектуры её преимущества станут очевидны.
 ```
 
-## How do I make an Entity and give it Components?
+## Как создать сущность и добавить к ней компоненты?
 
-SS14 uses a system we call **prototypes**. These are "entity presets", essentially. They are similar to *prefabs* in Unity, or a subtype of `/obj` or `/mob` in BYOND. 
+SS14 использует систему **прототипов**. Это своего рода "заготовки сущностей". Они похожи на *префабы* в Unity или подтипы `/obj` или `/mob` в BYOND.
 
-Entity prototypes define *which components are on the entity, and what data those components hold*. It also defines basic data like the entity's name, description, and prototype ID (used to spawn it). 
+Прототипы сущностей определяют, *какие компоненты есть у сущности и какие данные они хранят*. Также они задают основные данные, такие как имя сущности, описание и её ID (для создания в игре).
 
-An example is shown below:
+Пример:
 
 ```yaml
 - type: entity
@@ -64,33 +64,29 @@ An example is shown below:
     delay: 2.0
 ```
 
-This is written in **YAML**, a data language similar to JSON, and is located in the folder `Resources/Prototypes/Entities/Objects/Fun/skub.yml`. All prototypes must be in the `Resources/Prototypes` folder and should be organized into the proper folder. 
+Этот код написан на **YAML**, языке данных, похожем на JSON, и находится в папке `Resources/Prototypes/Entities/Objects/Fun/skub.yml`. Все прототипы должны быть в папке `Resources/Prototypes` и правильно организованы по каталогам.
 
-If you want more pointers on YAML, check [YAML Crash Course](../general-development/tips/yaml-crash-course.md) and [Serialization](../robust-toolbox/serialization.md).
+Если вам нужно больше информации по YAML, посмотрите [YAML Crash Course](../general-development/tips/yaml-crash-course.md) и [Serialization](../robust-toolbox/serialization.md).
 
-The entity prototype shown is "Skub", which looks like this in game:
+Прототип сущности "Skub" в игре выглядит так:
 
 ![](https://i.imgur.com/qOJ5OyB.png)
 
-As you can see in the YAML, it has many components, including `EmitSoundOnUse` and `ItemCooldown`. It is up to the coders to determine what data components hold and how systems give them behavior.
+Как видно, он содержит несколько компонентов, включая `EmitSoundOnUse` и `ItemCooldown`. Разработчики решают, какие данные хранят компоненты и как системы придают им поведение.
 
-To spawn the items in game from a prototype, you can press **F5** to open the **Entity Spawn Panel**. There is also a way to spawn prototypes in code.
+Чтобы создать предмет в игре через прототип, нажмите **F5**, чтобы открыть **панель создания сущностей**. Также можно создавать прототипы в коде.
 
-## Okay, now I want to honk!
+## Как сделать гудок?
 
-Your goal is to make a **Clown Horn** that **honks** when you use it. This requires us to have a component on the entity with a sound to play and system that plays that sound after it's used in hand (clicked, or activated with Z).
+Ваша цель — создать **клоунский гудок**, который **издаёт звук** при использовании. Для этого нам нужно добавить компонент, хранящий звук, и систему, которая воспроизведёт его при активации гудка.
 
 ```admonish info
-Normally, you would want to search through the codebase and ask some other coders to see whether a component/system that does this already exists. In this case, ```EmitSoundOnUse``` *does indeed exist* in the main SS14 codebase. But for the sake of this tutorial, we'll pretend it doesn't and try to implement it ourselves!
+Обычно стоит проверить кодовую базу и спросить других разработчиков, существует ли уже компонент или система для этой задачи. В данном случае компонент ```EmitSoundOnUse``` *уже существует*, но для учебных целей мы создадим его с нуля!
 ```
 
-**To start off**, let's make a simple clown horn prototype. I will make a new file called ```clown_horn.yml``` and add it to the ```Resources\Prototypes\Entities\Objects``` folder.
+### Создание прототипа
 
-![](https://i.imgur.com/qR0QzqA.png)
-
-Might want to organize that into the "Fun" folder later, but organization is up to you and your codebase!
-
-Now let's fill out the prototype with a basic clown horn. Because we don't yet have a dedicated SS14 prototype editor, many people usually just copy a similar prototype and modify it to their needs.
+Создайте новый файл ```clown_horn.yml``` в папке `Resources\Prototypes\Entities\Objects`.
 
 ```yaml
 - type: entity
@@ -104,50 +100,52 @@ Now let's fill out the prototype with a basic clown horn. Because we don't yet h
     state: icon
 ```
 
-Here we have a basic entity with a single component: `SpriteComponent`. Check out [the RSI spec](../specifications/robust-station-image.md) if you're unfamiliar with the RSI system, but the gist is that we have two fields for `SpriteComponent`: the RSI path relative to `Resources/Textures` (in this case the folder is named bikehorn.rsi) and the icon state.
+Этот прототип задаёт сущность с компонентом `SpriteComponent`. 
 
-One thing to note is that prototypes support parenting. In this case, `BaseItem` is our parent and contains a variety of components that are universal to all items. Thus, our clown horn will have those components too: basic components like `Item`, `Pullable`, and `Physics`. Parents aren't required at all, but they're useful in certain cases, like here.
+Теперь давайте добавим компонент, который будет воспроизводить звук при использовании, и создадим систему для обработки этого действия.
 
-Now, let's compile and check out our item in game:
+Следует отметить, что прототипы поддерживают Parenting. В данном случае `BaseItem` является нашим родителем и содержит множество компонентов, которые являются универсальными для всех предметов. Таким образом, наш клоунский рог тоже будет содержать эти компоненты: базовые компоненты, такие как `Item`, `Pullable` и `Physics`. Родители вовсе не обязательны, но они полезны в некоторых случаях, как, например, здесь.
+
+Теперь давайте скомпилируем и проверим наш предмет в игре:
 
 ![](https://i.imgur.com/dHigBbc.png)
 
-It sure is beautiful, but we appear to have lied! The bike horn does not yet honk honk. To remedy this, we'll have to create a new component to hold the data, such as the sound to play, and an EntitySystem which handles actually playing the sound.
+Она, конечно, прекрасна, но, похоже, мы обманулись! Велосипедный клаксон пока не делает хонк хонк, клоун нас убьет! Чтобы исправить это, нам придется создать новый компонент для хранения данных, таких как звук, который нужно воспроизвести, и EntitySystem, которая будет управлять воспроизведением звука.
 
-## Creating our component
+## Создание нашего компонента
 
-To make our component, we'll need to make a new class, let's call it ```PlaySoundOnUseComponent```. But wait a second....
+Чтобы создать наш компонент, нам нужно создать новый класс, назовем его ``PlaySoundOnUseComponent``. Но подождите секунду....
 
 ![](https://i.imgur.com/s9O13qH.png)
 
-Where do we put it? To answer this question, we have to think broad. We have to think about the **client** and the **server**.  
+Куда мы его поместим? Чтобы ответить на этот вопрос, мы должны мыслить широко. Мы должны думать о **клиенте** и **сервере**.  
 
-### Client-Server Paradigm
+### Парадигма клиент-сервер
 
-If you haven't read [Codebase Organization](../general-development/codebase-info/codebase-organization.md) already, it might be worth a read. But for this tutorial, there are only two things you need to understand:
+Если вы еще не читали [Codebase Organization](../general-development/codebase-info/codebase-organization.md), то, возможно, стоит ознакомиться. Но для этого урока вам нужно понять только две вещи:
 
-- The SERVER and CLIENT execute SEPARATELY.
-- The server should handle most logic to prevent exploits. Anything on the client can be altered by a malicious user.
+- СЕРВЕР и КЛИЕНТ выполняются РАЗДЕЛЬНО.
+- Сервер должен обрабатывать большую часть логики, чтобы предотвратить эксплойты. Все, что находится на клиенте, может быть изменено злоумышленником.
 
-With that in mind, our logic for our clown horn should look like this:
+Исходя из этого, наша логика для клоунского гудка должна выглядеть следующим образом:
 
-- Client sends "I use this item" to server.
-- Server receives this, checks if it makes sense, and sends "play honk" to all clients in range.
-- Client receives this and plays "honk".
+- Клиент отправляет на сервер сообщение «Я использую этот предмет».
+- Сервер получает это сообщение, проверяет, имеет ли оно смысл, и отправляет «play honk» всем клиентам в радиусе действия.
+- Клиент получает это и производит «гудок».
 
-This sounds rather complicated to implement from scratch. Thankfully, we have some premade code that helps us! Namely, the event `UseInHandEvent` which is raised on the server when an item is used, and the function `SoundSystem.Play()` which plays a sound to clients in range.
+Это звучит довольно сложно для реализации с нуля. К счастью, у нас есть готовый код, который поможет нам! А именно, событие `UseInHandEvent`, которое поднимается на сервере, когда предмет используется, и функция `SoundSystem.Play()`, которая воспроизводит звук для клиентов в радиусе действия.
 
-Those helpers can be thought of as handling **client click -> server** and **server -> client sound** for us. so all we need to do is have a component on the server which routes one into the other. 
+Можно считать, что эти помощники обрабатывают **клиентский клик -> сервер** и **сервер -> клиентский звук** за нас. Так что все, что нам нужно сделать, это иметь компонент на сервере, который направляет одно в другое. 
 
-### A basic implementation of a component
+### Базовое создание компонента
 
 ```admonish warning
-In the Space Station 14 codebase, Components & EntitySystems alike (along with other classes) go inside folders directly under the `Content.Server`, `Content.Shared`, or `Content.Client` projects. There are folders for `Atmos`, `Botany`, `Research`, `Storage`, and a lot more. If a suitable folder doesn't exist, create one! Never put files directly into the top directory of the project.
+В кодовой базе Space Station 14 компоненты и EntitySystems (а также другие классы) находятся в папках, расположенных непосредственно под проектами `Content.Server`, `Content.Shared` или `Content.Client`. Есть папки для `Atmos`, `Botany`, `Research`, `Storage` и многие другие. Если подходящей папки не существует, создайте ее! Никогда не помещайте файлы непосредственно в основную директорию проекта.
 ```
 
-Under the `Content.Server` project, there's a folder called `Sound`. That seems like a good place to put our new component (and in fact, this is where the real EmitSoundOnUse is located). Let's call our version `PlaySoundOnUseComponent`. Note: if you just copy paste this code in, it may not work, as you'll need to import various classes. Your IDE can do this for you.
+В проекте `Content.Server` есть папка `Sound`. Кажется, что это хорошее место для размещения нашего нового компонента (и на самом деле, именно здесь находится настоящий EmitSoundOnUse). Назовем нашу версию `PlaySoundOnUseComponent`. Примечание: если вы просто вставите этот код, он может не работать, так как вам придется импортировать различные классы. Ваша IDE может сделать это за вас.
 
-Now let's just make the most basic component possible:
+Теперь давайте сделаем самый простой компонент:
 
 ```csharp
 // Content.Server/Sound/PlaySoundOnUseComponent.cs
@@ -160,11 +158,11 @@ public sealed partial class PlaySoundOnUseComponent : Component
 }
 ```
 
-All components must inherit from the `Component` class. If you want your component to be read in YAML, you'll have to add `[RegisterComponent]` above your class. Furthermore, all components must be marked `sealed` and `partial` for engine reasons. You don't have to worry too much about what they mean.
+Все компоненты должны наследоваться от класса `Component`. Если вы хотите, чтобы ваш компонент читался в YAML, вам придется добавить `[RegisterComponent]` над вашим классом. Кроме того, все компоненты должны быть помечены `sealed` и `partial` по причинам, связанным с движком. Вам не нужно слишком беспокоиться о том, что они означают.
 
-In our prototype above, you might recall that we added `Sprite`, not `SpriteComponent` to the ClownHorn prototype. That's because component 'names' are autogenerated using the class name. In this case, our component's name is `PlaySoundOnUse`, which is generated by just removing `Component` from the class name.
+В нашем прототипе выше вы можете вспомнить, что мы добавили `Sprite`, а не `SpriteComponent` к прототипу ClownHorn. Это потому, что «имена» компонентов генерируются автоматически, используя имя класса. В данном случае имя нашего компонента - `PlaySoundOnUse`, которое генерируется путем удаления `Component` из имени класса.
 
-Now, let's go ahead and add PlaySoundOnUse to our prototype.
+Теперь давайте продолжим и добавим PlaySoundOnUse в наш прототип.
 
 ```yaml
 - type: entity
@@ -179,11 +177,11 @@ Now, let's go ahead and add PlaySoundOnUse to our prototype.
   - type: PlaySoundOnUse
 ```
 
-Well, this is boring; not only does our component not have any data, but it doesn't do anything either!
+Это скучно: у нашего компонента не только нет данных, но и он ничего не делает!
 
-Let's add some data to our component. As you may have noticed above, the `Sprite` component on our bike horn has two fields listed: `sprite`, and `state`. Whatever you put in these fields will be passed into the component when it's created, and then our EntitySystem can use that data to do something.
+Давайте добавим некоторые данные в наш компонент. Как вы могли заметить выше, компонент `Sprite` на нашем велосипедном рожке имеет два поля: `sprite` и `state`. Все, что вы поместите в эти поля, будет передано в компонент при его создании, а затем наша система сущностей (EntitySystem) сможет использовать эти данные для выполнения каких-либо действий.
 
-In our case, we'll probably want a field called `sound` on our component, which stores a path to the sound to play when the entity is activated. It's pretty easy to do that:
+В нашем случае мы, вероятно, захотим, чтобы в компоненте было поле под названием `Sound`, в котором будет храниться путь к звуку, воспроизводимому при активации сущности. Сделать это довольно просто:
 
 ```csharp
 // Content.Server/Sound/PlaySoundOnUseComponent.cs
@@ -198,7 +196,7 @@ public sealed partial class PlaySoundOnUseComponent : Component
 }
 ```
 
-All you need to do to create a field that can be modified in YAML is to add the `[DataField]` attribute, which holds the name of the field, and give it a default value, in this case `string.Empty`. Now, we can add our sound to our bike horn prototype:
+Чтобы создать поле, которое можно изменять в YAML, достаточно добавить атрибут `[DataField]`, который содержит имя поля, и присвоить ему значение по умолчанию, в данном случае `string.Empty`. Теперь мы можем добавить наш звук в прототип велосипедного клаксона:
 
 ```yaml
 - type: entity
@@ -214,12 +212,12 @@ All you need to do to create a field that can be modified in YAML is to add the 
     sound: /Audio/Items/bikehorn.ogg
 ```
 
-Now we're getting somewhere! One thing to note is that the path here is relative to the `Resources` directory (which `SoundSystem` always assumes), and we're also assuming that the `Resources/Audio/Items/bikehorn.ogg` file is real. If you check, it is! But if a sound isn't present that you need, you can always add it yourself somewhere in the `Audio` folder.
+Теперь у нас что-то получается! Обратите внимание, что путь здесь указан относительно директории `Resources` (что `SoundSystem` всегда предполагает), и мы также предполагаем, что файл `Resources/Audio/Items/bikehorn.ogg` является реальным. Если проверить, то так оно и есть! Но если нужного вам звука нет, вы всегда можете добавить его самостоятельно в папку `Audio`.
 
 
-## Creating our EntitySystem
+## Создание нашей EntitySystem
 
-Let's finally add some flavor to our bike horn by.. making it actually honk. As said previously, we'll need an `EntitySystem` which hooks into the `UseInHandEvent` and calls some code from there. Let's create our EntitySystem `PlaySoundOnUseSystem` in the same `Content.Server/Sound` folder:
+Давайте, наконец, добавим изюминку нашему велосипедному клаксону, заставив его на самом деле хонкать. Как уже говорилось, нам понадобится `EntitySystem`, которая подключается к `UseInHandEvent` и вызывает оттуда некоторый код. Давайте создадим нашу систему сущностей `PlaySoundOnUseSystem` в той же папке `Content.Server/Sound`:
 
 ```csharp
 // Content.Server/Sound/PlaySoundOnUseSystem.cs
@@ -232,11 +230,11 @@ public sealed class PlaySoundOnUseSystem : EntitySystem
 }
 ```
 
-You'll notice that here, our system inherits from `EntitySystem`. This automatically registers it as a proper EntitySystem in the game and allows us to use some useful dependencies and override some methods to add behavior.
+Вы заметите, что здесь наша система наследует от `EntitySystem`. Это автоматически регистрирует ее как правильную EntitySystem в игре и позволяет нам использовать некоторые полезные зависимости и переопределять некоторые методы, чтобы добавить поведение.
 
-In order to subscribe to an event being raised, we'll need to override the system's `Initialize` method; this method is called when the EntitySystem is created.
+Для того чтобы подписаться на событие, нам нужно переопределить метод `Initialize` системы; этот метод вызывается при создании EntitySystem.
 
-In this method, we'll add a `SubscribeLocalEvent` call, and I'll explain the details after the fact.
+В этом методе мы добавим вызов `SubscribeLocalEvent`, а подробности я объясню после.
 
 ```csharp
 // Content.Server/Sound/PlaySoundOnUseSystem.cs
@@ -252,19 +250,19 @@ public sealed class PlaySoundOnUseSystem : EntitySystem
 }
 ```
 
-There's a lot going on in that method call! Basically, we're telling the game:
+В этом вызове метода происходит очень многое! По сути, мы говорим игре:
 
-*"Whenever a UseInHandEvent is raised on an entity that has the PlaySoundOnUse component, I want you to call my OnUseInHand method."*
+*"Всякий раз, когда на сущность, имеющую компонент PlaySoundOnUse, поднимается событие UseInHandEvent, я хочу, чтобы вы вызвали мой метод OnUseInHand. »*.
 
-You've probably noticed that this code actually gives you an error, *because the method OnUseInHand doesn't exist yet*! Let's add that method. This is called an **event handler**, and event handlers require a specific set of arguments:
+Вы, наверное, заметили, что этот код на самом деле выдает ошибку, потому что метода OnUseInHand еще не существует! Давайте добавим этот метод. Это называется **обработчиком событий**, а обработчики событий требуют определенного набора аргументов:
 
-- The UID (unique identifier) of the entity the event was raised on
-- The component that was specified in the subscription, so you can access its data and use that to change behavior
-- The event itself, which contains useful data like the entity who activated the item.
+- UID (уникальный идентификатор) сущности, для которой было вызвано событие
+- компонент, который был указан в подписке, чтобы вы могли получить доступ к его данным и использовать их для изменения поведения
+- Само событие, которое содержит полезные данные, такие как сущность, активировавшая элемент.
 
-If you're using an IDE, it might allow you to automatically create this method using *Alt+Enter*.
+Если вы используете IDE, она может позволить вам автоматически создать этот метод с помощью *Alt+Enter*.
 
-Here's what our class will look like now, with our new method:
+Вот как теперь будет выглядеть наш класс с новым методом:
 
 ```csharp
 namespace Content.Server.Sound;
@@ -286,9 +284,9 @@ public sealed class PlaySoundOnUseSystem : EntitySystem
 
 ```
 
-We're almost there. Now, the method `OnUseInHand` will be called when we activate the item, and we can play our sound there.
+Мы почти у цели. Теперь при активации предмета будет вызываться метод `OnUseInHand`, и мы сможем воспроизвести наш звук там.
 
-Also, we've added `[Dependency] private readonly SharedAudioSystem` to class. It will allow us to play audio in modern way (instead of using obsolete `SoundSystem.Play`) further.
+Также мы добавили в класс `[Dependency] private readonly SharedAudioSystem`. Это позволит нам в дальнейшем воспроизводить аудио современным способом (вместо использования устаревшего `SoundSystem.Play`).
 
 ```csharp
 private void OnUseInHand(Entity<PlaySoundOnUseComponent> ent, ref UseInHandEvent args)
@@ -297,32 +295,32 @@ private void OnUseInHand(Entity<PlaySoundOnUseComponent> ent, ref UseInHandEvent
 }
 ```
 
-The `PlayPvs` method is useful for playing sounds. It has two arguments:
+Метод `PlayPvs` полезен для воспроизведения звуков. Он имеет два аргумента:
 
-1. The sound to play.
+1. Звук, который нужно воспроизвести.
 
-In this case, we just pass it our `sound` field on our `PlaySoundOnUseComponent`. 
+В данном случае мы просто передаем ему наше поле `Sound` в `PlaySoundOnUseComponent`. 
 
-2. The source entity 
+2. Сущность-источник 
 
-This is an optional argument that is used for positional audio. In our case, we want the sound to come from the horn, so we pass in the horn's Uid (which is the `Owner` property of the entity). If this arugment is not given, the sound is played globally and will be audible to all players.
+Это необязательный аргумент, который используется для позиционного звука. В нашем случае мы хотим, чтобы звук исходил от рога, поэтому мы передаем Uid рога (который является свойством `Owner` сущности). Если этот параметр не указан, звук будет воспроизводиться глобально и будет слышен всем игрокам.
 
-If you compile the game and spawn our bike horn using the **F5** Entity Spawn Menu, you can try activating it in hand and--incredible! It plays the sound properly! Hopefully! If not, you might have messed something up in the YAML, or missed a method in the EntitySystem.
+Если вы скомпилируете игру и спауните наш велосипедный клаксон с помощью меню **F5** Entity Spawn Menu, вы можете попробовать активировать его в руках и - невероятно! Он воспроизводит звук правильно! Надеюсь! Если нет, возможно, вы что-то напутали в YAML или пропустили метод в EntitySystem.
 
-Also, `PlayPvs` automaticly manages distance filtering, so you don't have to worry about it.
+Кроме того, `PlayPvs` автоматически управляет фильтрацией расстояний, так что вам не придется об этом беспокоиться.
 
-## We're done here
+## Мы закончили.
 
-With that, this tutorial is finished! If you want to continue experimenting with your newfound clown horn, here are some ideas:
+На этом мы закончили этот урок! Если вы хотите продолжить эксперименты с обретенным клоунским гудком, вот несколько идей:
 
-- Try to implement clown horn using existing components. You can refer to skub.yml up this page
-- Add a delay to the clicking through adding ```ItemCooldown``` to your prototype, and raising the `RefreshItemCooldownEvent`.
-- Adjust the volume/variation of the sound played (see the `PlayPvs()` function's `audioParams` argumernt).
-- Make the sound play when the bike horn is stepped on as well
-    - This one is kind of hard and involves adding a lot of new data! Look at glass shards for an example.
-- Make the bike horn do damage on attack using MeleeWeaponComponent
-- Make the bike horn edible using FoodComponent and SolutionContainerComponent
-- Add support for playing a random sound from a SoundCollection or SoundSpecifier rather than a single sound (the real EmitSoundOnUse does this, if you need pointers) 
-- Dive into explosion code and give it a 5% chance to explode on each honk!
+- Попробуйте реализовать клоунский рог, используя существующие компоненты. Вы можете обратиться к skub.yml на этой странице.
+- Добавьте задержку на нажатие, добавив ``ItemCooldown`` к вашему прототипу и подняв ``RefreshItemCooldownEvent``.
+- Настройте громкость/изменение воспроизводимого звука (см. аргумент `PlayPvs()` функции `audioParams`).
+- Сделайте так, чтобы звук воспроизводился и при нажатии на клаксон велосипеда.
+    - Это довольно сложно и требует добавления большого количества новых данных! Для примера посмотрите на осколки стекла.
+- Заставьте велосипедный клаксон наносить урон при атаке с помощью MeleeWeaponComponent.
+- Сделайте велосипедный рожок съедобным с помощью FoodComponent и SolutionContainerComponent.
+- Добавьте поддержку воспроизведения случайного звука из SoundCollection или SoundSpecifier, а не одного звука (это делает настоящий EmitSoundOnUse, если вам нужны указатели). 
+- Погрузитесь в код взрыва и дайте ему 5% шанс взорваться при каждом гудке!
 
-The world's your donk packet, and you've got a sizzling hot fire ready to cook it!
+Мир - это ваш пакет с донк-покетами, и у вас есть обжигающе горячий огонь, чтобы приготовить его!

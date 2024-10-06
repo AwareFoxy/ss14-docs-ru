@@ -1,11 +1,10 @@
-# Introduction to SS14 By Example
+# Введение в SS14 на примерах
 
 {{ #template ../templates/outdated.md }}
 
-SS14 By Example is a knowledgebase for figuring out how to do a lot of simple tasks in the SS14 codebase, like adding prototypes, entities, components, visualizers, etc. SS14 By Example assumes you haven't read any other documentation, but does assume you are familiar with C# and YAML. Each example is not self contained, and may use information learned in previous SS14 By Example documentation.
+**SS14 на примерах** — это база знаний, которая помогает разобраться, как выполнять различные простые задачи в кодовой базе SS14, такие как добавление прототипов, сущностей, компонентов, визуализаторов и т.д. Документация SS14 на примерах предполагает, что вы не читали другие материалы, но знакомы с C# и YAML. Каждый пример не является полностью самостоятельным и может использовать информацию, полученную в предыдущих разделах документации SS14 на примерах.
 
-If you're coming here from BYOND or SS13, hello! These docs are written with that audience in mind, and it tries to translate some broad topics from SS13 into SS14 and Robust Toolbox.
+Если вы пришли сюда с BYOND или SS13, привет! Эти документы написаны с учётом именно этой аудитории и пытаются перевести некоторые общие темы из SS13 в контекст SS14 и Robust Toolbox.
 
-SS14 By Example will not cover extending content that already exists in SS14, such as [construction](../space-station-14/core-tech/construction.md), [chemistry](../space-station-14/core-tech/chemistry.md), body system, or botany. These should either be evident from the code, or are covered in **Content Documentation**. You can see the topics that will be covered in the sidebar, or at the bottom of this page.
-
-SS14 By Example will also not cover [basic setup](../general-development/setup.md) or cover any [codebase info](../general-development/codebase-info.md) like conventions or common nomenclature, as these have their own documentation elsewhere on this site.
+SS14 на примерах не будет охватывать расширение уже существующего контента в SS14, такого как [конструкция](../space-station-14/core-tech/construction.md), [химия](../space-station-14/core-tech/chemistry.md), система тела или ботаника. Эти вещи либо очевидны из кода, либо освещены в **Документации по контенту**. Вы можете увидеть темы, которые будут рассмотрены, в боковой панели или внизу этой страницы.
+SS14 на примерах также не затрагивает [основную настройку](../general-development/setup.md) или любую [информацию о кодовой базе](../general-development/codebase-info.md), такие как соглашения или общая номенклатура, так как у этих тем есть отдельная документация на этом сайте.
