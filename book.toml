@@ -3,7 +3,7 @@ authors = ["Space Wizards Contributors"]
 language = "ru"
 multilingual = false
 src = "src"
-title = "Русское Дев-Вики SS14"
+title = "Russian SS14 Dev Wiki"
 description = "Tutorial & reference for all Space Wizards Federation projects, including the Robust Toolbox engine and its flagship open source game, Space Station 14."
 
 [preprocessor.mermaid]
