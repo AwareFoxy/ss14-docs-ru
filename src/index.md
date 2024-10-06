@@ -1,41 +1,40 @@
 <img src="en/assets/misc/icon-trans.svg" width=128 style="margin-left:auto;margin-right:auto;display:block"/>
 
-```admonish warning "Players beware"
-This is the developer's wiki. If you are a player, you are looking for [the player wiki](https://wiki.spacestation14.io/wiki/Main_Page).
+```admonish warning "Для игроков"
+Это вики для разработчиков, это [википедия для игроков](https://station14.ru/wiki/).
 ```
 
-```admonish question "Technical Issues"
-If you are having difficulties with logging into the game or building it, please try the following resources:
-[🔊 Discord](https://discord.gg/ss14). This is the most active community of developers for Space Station 14. Ask a question on the General or Help channel.
+```admonish question "Технические проблемы"
+Если у вас возникают трудности с входом в игру или ее сборкой, попробуйте следующие ресурсы:
+[🔊 Discord](https://discord.gg/ss14). Это наиболее активное сообщество разработчиков Space Station 14. Задайте вопрос в канале для русских.
 [📲 FAQ](https://spacestation14.io/about/faq/)
-[🎮 Forums](https://forum.spacestation14.io/)
+[🎮 Форумы](https://forum.spacestation14.io/)
 ```
 
-This wiki is written in [Markdown](https://docs.requarks.io/en/editors/markdown) using `mdbook`. You can view our README.md for the docs site [here](https://github.com/space-wizards/docs/blob/master/README.md), which has useful information.
+Эта вики написана на [Markdown](https://docs.requarks.io/en/editors/markdown) с использованием `mdbook`. Вы можете просмотреть наш README.md для сайта документации [здесь](https://github.com/awarefoxy/ss14-docs-ru/blob/master/README.md), где содержится полезная информация.
 
-```admonish info "Making contributions"
-If you would like to make contributions to this documentation site, it's hosted fully open source on GitHub and you can make a webedit PR to any page using the button in the top right. Check out our [Guide to Editing Docs](en/meta/guide-to-editing-docs.md) page for more information.
+```admonish info "Внесение вклада"
+Если вы хотите внести вклад в этот сайт документации, он полностью открыт на GitHub, и вы можете сделать PR через веб-редактор для любой страницы, используя кнопку в правом верхнем углу. Ознакомьтесь с нашей страницей [Руководство по редактированию документации](en/meta/guide-to-editing-docs.md) для получения дополнительной информации.
 ```
 
-## Getting Started
+## С чего начать
 
-- [:question: How do I code?](en/general-development/setup/howdoicode.md)
-- [:package: Setting up the Dev Environment](en/general-development/setup/setting-up-a-development-environment.md)
-- [:page_with_curl: Core Game Design](en/space-station-14/core-design.md)
-- [:world_map: Mapping](en/space-station-14/mapping.md)
-- [:chart_with_upwards_trend: Git for the SS14 Developer](en/general-development/setup/git-for-the-ss14-developer.md)
+- [:question: Как мне кодить?](en/general-development/setup/howdoicode.md)
+- [:package: Настройка среды разработки](en/general-development/setup/setting-up-a-development-environment.md)
+- [:page_with_curl: Основные принципы игрового дизайна](en/space-station-14/core-design.md)
+- [:world_map: Карты](en/space-station-14/mapping.md)
+- [:chart_with_upwards_trend: Git для разработчика SS14](en/general-development/setup/git-for-the-ss14-developer.md)
 
+### Чем стоит заняться?
 
-### What should I work on?
+* Поговорите с текущими разработчиками в Discord.
+* Посмотрите [список задач](https://github.com/space-wizards/space-station-14/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc), над которыми можно работать.
+* Прочтение [Акронимов и общепринятых обозначений](en/general-development/codebase-info/acronyms-and-nomenclature.md), а также других статей этой вики в разделах "Советы" или "Настройка" поможет вам понять, что происходит.
 
-* Talk to current developers in Discord.
-* Check [the list of issues](https://github.com/space-wizards/space-station-14/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) for anything you can work on.
-* Reading through [Acronyms & Common Nomenclature](en/general-development/codebase-info/acronyms-and-nomenclature.md) as well as the other articles on this wiki in `Tips` or `Setup` will likely help you understand what is happening.
+### Какие репозитории входят в Space Station 14?
+* [Space Station 14](https://github.com/space-wizards/space-station-14) — основная кодовая база. Здесь находятся задачи с наивысшим приоритетом. [Проблемы Space Station 14](https://github.com/space-wizards/space-station-14/issues)
+* [Robust Toolbox](https://github.com/space-wizards/RobustToolbox) — это кастомный игровой движок. [Проблемы Robust Toolbox](https://github.com/space-wizards/RobustToolbox/issues)
+* [Space Station 14 RU](https://github.com/space-syndicate/space-station-14) — это основной репозиторий русского сообщества.
 
-### What repositories are part of Space Station 14?
-* [Space Station 14](https://github.com/space-wizards/space-station-14) is the main codebase. It has the most priority issues. [Space Station 14 Issues](https://github.com/space-wizards/space-station-14/issues)
-* [Robust Toolbox](https://github.com/space-wizards/RobustToolbox) is the custom game engine. [Robust Toolbox Issues](https://github.com/space-wizards/RobustToolbox/issues)
-
-There are other repositories that do not have as many priority issues to work on. If you are still curious about them, they are here:
-- [Space-Wizards](https://github.com/space-wizards) 
-
+Существуют и другие репозитории с не меньшим количеством приоритетных задач. Если вас они интересуют, вы можете найти их здесь:
+- [Space-Wizards](https://github.com/space-wizards)
