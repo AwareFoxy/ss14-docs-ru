@@ -1,70 +1,68 @@
-# Admin Cookbook
+# Смешные команды для админов
 
-## Delete PA & Singularity Generator
+## Удаление УЧ и генератора сингулярности
 ```
     entities named "PA .*" do delete $ID
     deleteewi SingularityGenerator
 ```
-## Add power to the station permanently
-`Admin menu -> objects -> select grids in dropdown -> right click the station -> tricks -> click the battery with the ∞`
-## Uncurse all lockers
+## Снять проклятия со шкафчиков
 `entities with CursedEntityStorage do rmcomp $ID CursedEntityStorage; addcomp $ID EntityStorage`
-## Remove all ghostroles
+## Удалить все роли призраков
 `entities with GhostTakeoverAvailable do rmcomp $ID GhostTakeoverAvailable; rmcomp $ID Mind`
-## Clean up assorted body parts
+## Очистка от различных частей тела
 `entities with MapGrid children with BodyPart do delete $ID`
-## Disarm the station's potassium supply
+## Разоружить весь калий на станции
 `entities hasreagent Potassium do delete $ID`
-## Remove all of a specific character's insulated gloves
+## Удалить все изолирующие перчатки выбранного персонажа
 `entities with Mind named "NAME GOES HERE" rchildren named "insulated gloves" do delete $ID`
 
-# Ghost Roles
-## Sentient vendors
+# Роли призраков
+## Разумные автоматы
 `entities with Advertise do makeghostrole $ID "$NAME" "You're a vending machine, use your speaker to annoy people."; rmcomp $ID Advertise`
-## Sentient soap
+## Разумное мыло
 `entities with Slippery prototyped SoapOmega do makeghostrole $ID "$NAME" "You're a bar of soap. Slip absolutely everyone."; addcomp $ID MobState; addcomp $ID PlayerMobMover; addcomp $ID PlayerInputMover`
-## Please don't
+## Пожалуйста, не надо этого делать
 `entities with Item do makeghostrole $ID "$NAME" "You're a random, talking item. What the fuck?"; addcomp $ID MobState; addcomp $ID PlayerMobMover; addcomp $ID PlayerInputMover`
-## Your heart would like a word.
+## Ваше сердце этого больше не выдержит
 `entities with Mechanism do makeghostrole $ID "$NAME" "You are some unfortunate soul's $NAME"`
-## Ghostularity
+## Призраколярность
 `entities with Singularity do makeghostrole $ID "Singularity" "FUCK"; addcomp $ID MobState; addcomp $ID MovementIgnoreGravity; addcomp $ID PlayerInputMover; addcomp $ID PlayerMobMover`
 
-# Probably make everyone unhappy
-## Cursed locker abuse
-### Cursed lockers
+# Сделает всех несчастными
+## Абьюз проклятых шкафчиков
+### Проклятые шкафчики
 `entities with EntityStorage named ".*closet$|^.*locker" do rmcomp $ID EntityStorage; addcomp $ID CursedEntityStorage`
-### Haunted lockers
+### Ожившие шкафчики
 `entities with EntityStorage named ".*closet$|^.*locker" do rmcomp $ID EntityStorage; addcomp $ID CursedEntityStorage; makeghostrole $ID "$NAME" "You're a haunted locker. Consume people."; addcomp $ID MobState; addcomp $ID PlayerMobMover; addcomp $ID PlayerInputMover`
-## Mess with station access
-### All Access Day
+## Баловство с доступами
+### День полного доступа
 `entities with AccessReader do rmcomp $ID AccessReader`
-### All access bridge on Saltern
+### Полный доступ к мостику на станции Салтерн
 `entities with Airlock named "Bridge" near 6 with Airlock do rmcomp $ID AccessReader`
-## Swap around jobs/outfits
-### Clown Day
+## Замена работ/костюмов
+### День клоунов
 `entities with Mind prototyped MobHuman do setoutfit $ID ClownGear; addcomp $ID Clumsy`
-### Clownitis
+### Клоунитизм
 `entities with Clumsy near 1 with Body prototyped MobHuman not with Clumsy do setoutfit $ID ClownGear; addcomp $ID Clumsy`
-### All but two of us are clowns, who is it
+### Все из нас, кроме двух, клоуны - кто оставшиеся
 `entities with Mind alive prototyped MobHuman not with Clumsy not select 2 do setoutfit $ID ClownGear; addcomp $ID Clumsy`
-### Mime Day
+### День мима
 `entities with Mind prototyped MobHuman do setoutfit $ID MimeGear; rmcomp $ID Speech`
-## Containers
-### Remove someone's lungs
+## Контейнеры
+### Удалить чьи-то лёгкие
 `entities with Body prototyped MobHuman named "NAME GOES HERE" rchildren named "lungs" do delete $ID`
-or to drop them on the floor:
+А это выкинет их на пол:
 `entities with Body prototyped MobHuman named "NAME GOES HERE" rchildren named "lungs" do rmmechanism $ID`
-## Mess with station structure
-### Make the station see-through
+## Баловство со станцией
+### Сделать станцию прозрачной
 `entities named ".*wall" do spawn ReinforcedWindow $ID; spawn Grille $ID; spawn CableApcExtension $ID; delete $ID`
-### Electric Avenue
+### Проспект им. Электрика
 `entities named ".*wall" do spawn spawn Grille $ID; spawn CableApcExtension $ID`
 
-# Make everyone unhappy
-## Summon God
+# Сделает всех несчастными
+## Вызов бога
 `entities with Body prototyped MobHuman alive select 1 do addcomp $ID Singularity; addcomp $ID MovementIgnoreGravity; godmode $ID`
-## bang
+## бэнг
 `entities with MapGrid rchildren do explode $WX $WY 1 1 1 1`
-## bang, but funnier
+## бэнг, но веселей
 `entities with MapGrid children with Item not anchored do addcomp $ID RoguePointingArrow`

@@ -1,32 +1,34 @@
-# Basic Networking and You
+Вот профессиональный перевод для mdBook:
 
-You should already be familiar with the `Client`/`Shared`/`Server` paradigm that Robust uses. If not, you should read up on the previous documentation.
+# Основы сетевого взаимодействия и вы
 
-SS14 is a multiplayer game! This is a very important fact, and its a fact you'll likely have to reckon with quite a lot when coding. Thinking through this properly is important to ensure that things go smoothly and there are no potential security oversights.
+Вы уже должны быть знакомы с парадигмой `Клиент`/`Сервер`, используемой в Robust. Если нет, ознакомьтесь с предыдущей документацией.
 
-Most of the time, networking will involve the server sending some important data to the client, so that the client can do things with it, like show a user interface or show appearance visuals. This is known as **replication**, and in SS14 is primarily handled through **component states**.
+SS14 — это многопользовательская игра! Это очень важно, и этот факт нужно учитывать при программировании, чтобы избежать ошибок и проблем с безопасностью.
 
-## Component States
+Чаще всего сетевая работа заключается в том, что сервер отправляет важные данные клиенту, чтобы клиент мог использовать их, например, для отображения интерфейса пользователя или визуальных эффектов. Это называется **репликацией**, и в SS14 она в основном реализуется через **состояния компонентов**.
 
-A component state is simple--its just a data class inheriting `ComponentState`. They define which data is sent to the client, and are built  up from data within components.
+## Состояния компонентов
 
-How does the game know when to send this data? Obviously, it doesn't just send it constantly--that's hugely unnecessary and would be terrible for performance and bandwidth. Instead, a server system must call `Dirty(EntityUid uid, Component component)`, which marks the entity as 'dirty', meaning that it will create and send a new component state for it next tick.
+Состояние компонента — это простая структура данных, наследуемая от `ComponentState`. Она определяет, какие данные отправляются клиенту, и собирается из данных внутри компонентов.
 
-Two special events exist for putting data into and getting data out of component states: `ComponentGetState` and `ComponentHandleState`. `GetState` is always called on the server, and `HandleState` is called on the client. However, both event subscriptions can go in `Shared`, and it will still work as expected!
+Как игра узнаёт, когда нужно отправить данные? Очевидно, что данные не отправляются постоянно — это было бы чрезмерно и плохо сказывалось бы на производительности и пропускной способности. Вместо этого сервер должен вызвать `Dirty(EntityUid uid, Component component)`, чтобы пометить сущность как "грязную", что означает создание и отправку нового состояния компонента в следующий тик.
 
-### Auto-Component State Generation
+Для отправки и получения данных через состояния компонентов существуют два специальных события: `ComponentGetState` и `ComponentHandleState`. `GetState` всегда вызывается на сервере, а `HandleState` — на клиенте. Однако подписки на оба события можно разместить в разделе `Shared`, и это будет работать должным образом!
 
-Robust Toolbox supports using **source generators** to massively simplify component state networking. This is vastly preferred to trying to do it manually in most situations. This works by using a C# feature to analyze code before it is compiled, and to automatically generate boilerplate source code.
+### Автоматическая генерация состояний компонентов
 
-First, your component, and all of the networked fields, should be in `Content.Shared`, and the component class should be marked with `[NetworkedComponent]`, which enables networking in the first place. 
+Robust Toolbox поддерживает использование **генераторов исходного кода** для значительного упрощения сетевого взаимодействия состояний компонентов. Это предпочтительный способ в большинстве случаев, так как он позволяет избежать ручного написания однотипного кода. Это реализуется с помощью функции C#, которая анализирует код до его компиляции и автоматически генерирует необходимые фрагменты кода.
 
-To use the source generator to automatically replicate fields, make your component class partial, annotate it with `[AutoGenerateComponentState]`, and mark any fields you want to be networked with `[AutoNetworkedField]`. Then, when you dirty the component (or when it's first added to an entity), it should Just Work™️ and the client will have all networked fields.
+Во-первых, ваш компонент и все сетевые поля должны находиться в разделе `Content.Shared`, а класс компонента должен быть помечен атрибутом `[NetworkedComponent]`, который активирует сетевое взаимодействие.
 
-If you have code in the handle state that calls some function after the field setting has been done (such as updating appearance), change the component state attribute to `[AutoGenerateComponentState(true)]` , and then you can subscribe by-ref to AfterAutoHandleStateEvent and do things in there! 
+Чтобы использовать генератор исходного кода для автоматической репликации полей, сделайте класс компонента частичным, пометьте его атрибутом `[AutoGenerateComponentState]` и укажите поля, которые нужно реплицировать, с помощью `[AutoNetworkedField]`. Затем, когда вы помечаете компонент как грязный (или когда он впервые добавляется к сущности), всё должно работать автоматически, и клиент получит все сетевые поля.
 
-If your field requires cloning for prediction purposes (such as a dict), you can change the field attribute to `[AutoNetworkedField(true)]`. If you need more complex networking, the manual method should be used.
+Если у вас есть код, который должен выполняться после обновления полей (например, обновление внешнего вида), измените атрибут состояния компонента на `[AutoGenerateComponentState(true)]`, и тогда вы сможете подписаться на событие AfterAutoHandleStateEvent и выполнить необходимые действия там.
 
-An example of all of the networking code required for IDCardComponent now, from https://github.com/space-wizards/space-station-14/pull/14845:
+Если ваше поле требует клонирования для целей предсказания (например, словарь), вы можете изменить атрибут поля на `[AutoNetworkedField(true)]`. Если требуется более сложное сетевое взаимодействие, следует использовать ручной метод.
+
+Пример всего необходимого сетевого кода для компонента ID-карты можно найти здесь: https://github.com/space-wizards/space-station-14/pull/14845:
 ```csharp
 // IDCardComponent.cs
 [RegisterComponent, NetworkedComponent]
@@ -43,11 +45,11 @@ public sealed partial class IdCardComponent : Component
 }
 ```
 
-### Manual Component State Handling
+### Ручная обработка состояния компонентов
 
-Sometimes the manual method has to be used, if the handling is more complicated than just simple setting of fields.
+Иногда приходится использовать ручной метод, если обработка данных сложнее, чем просто установка полей.
 
-Let's take ambient sounds as an example (although in this instance it could easily be autogenerated):
+Рассмотрим пример с компонентом фоновых звуков (хотя в данном случае это можно было бы сгенерировать автоматически):
 
 ```csharp
 // AmbientSoundComponent.cs
@@ -60,9 +62,9 @@ Let's take ambient sounds as an example (although in this instance it could easi
     }
 ```
 
-This is a definition of a fairly simple component state. It's marked as `[Serializable, NetSerializable]`, which is required for any object being sent over the network. This class defines three variables that it wants to sync to the client--whether this sound is enabled, its range, and its volume.
+Это определение простого состояния компонента. Оно помечено атрибутами `[Serializable, NetSerializable]`, что необходимо для любого объекта, отправляемого по сети. Этот класс определяет три переменные, которые необходимо синхронизировать с клиентом: включён ли звук, его радиус и громкость.
 
-Let's see how this state is constructed on the server:
+Теперь посмотрим, как это состояние создается на сервере:
 
 ```csharp
 /// SharedAmbientSoundSystem.cs
@@ -75,7 +77,7 @@ Let's see how this state is constructed on the server:
 
         ...
 
-// In the event handlers..
+// В обработчиках событий...
         private void GetCompState(Entity<AmbientSoundComponent> ent, ref ComponentGetState args)
         {
             args.State = new AmbientSoundComponentState
@@ -87,13 +89,13 @@ Let's see how this state is constructed on the server:
         }
 ```
 
-One important thing to note is that, in the event handler args, the syntax used is `ref ComponentGetState args` rather than simply `ComponentGetState args`. This is required for certain events, as they are value-types raised 'by-ref', rather than just classes inheriting `EntityEventArgs`. This is done for performance reasons and isn't super important, but its good to note as it can slip you up with runtime errors that may be confusing if you forget `ref`.
+Важно отметить, что в аргументах обработчика событий используется синтаксис `ref ComponentGetState args` вместо простого `ComponentGetState args`. Это необходимо для некоторых событий, так как они являются структурами, передаваемыми "по ссылке", а не классами, наследуемыми от `EntityEventArgs`. Это сделано для повышения производительности и может быть важным для предотвращения ошибок во время выполнения, если забыть про `ref`.
 
-To specify the state to send, you simply set the `State` field on the event with your new component state, constructed from the values on the server component. Easy!
+Чтобы указать состояние для отправки, достаточно установить поле `State` в событии, используя новое состояние компонента, созданное на основе значений с сервера. Просто!
 
 ---
 
-And on the client (technically still in shared, but this code is only run on the client!)
+Теперь рассмотрим клиентскую сторону (хотя технически это всё ещё общий код, но он выполняется только на клиенте!):
 
 ```csharp
 /// SharedAmbientSoundSystem.cs
@@ -110,16 +112,13 @@ And on the client (technically still in shared, but this code is only run on the
         }
 ```
 
-Again, note the `ref`.
+Здесь снова используется `ref`.
 
-The first line of the method just does some fancy C# Pattern Matching to cast the `Current` field on the event args into the state that we're looking for, since this is a pretty generic event.
+Первая строка метода выполняет проверку с помощью сопоставления с шаблоном C# для приведения поля `Current` в событии к ожидаемому состоянию. После этого клиент использует данные из состояния компонента для синхронизации своего компонента, чтобы любая клиентская специфическая логика (например, воспроизведение звуков) работала так, как это задумано сервером.
 
-From then on, the client simply uses the values contained in the component state to sync its component, so that any client-specific ambient code (like.. you know.. playing the sounds) can run as the server intends. 
+### Пример сетевого взаимодействия компонентов
 
-
-### Component Networking Example
-
-As a high-level example, let's see how atmospheric vents handle their ambient sounds.
+В качестве примера высокого уровня рассмотрим, как атмосферные венты управляют своими фоновыми звуками.
 
 ```csharp
 /// GasVentPumpSystem.cs
@@ -131,27 +130,42 @@ As a high-level example, let's see how atmospheric vents handle their ambient so
             ...
 ```
 
-The vent sets its ambience to true first, as a default. However, if the vent is not enabled, it will disable ambience. 
+Вентиль сначала включает фоновый звук по умолчанию. Однако если вентиль отключён, он выключает звук.
 
-This is all in server code, though! In the `SetAmbience` function, the ambience system calls `Dirty` on the entity, which tells the server that this entities data has been updated and the client needs to be made aware of that. Then, next tick, the server raises a `ComponentGetState` event on the vent, and the ambient sound state is created and sent.
+Всё это выполняется в серверном коде! В функции `SetAmbience` система звуков вызывает `Dirty` для сущности, что сообщает серверу об обновлении данных сущности, и клиент должен об этом узнать. Затем в следующий тик сервер поднимает событие `ComponentGetState` для вентиля, и состояние фонового звука создаётся и отправляется.
 
-Once the client receives it (after latency), it will raise `ComponentHandleState` on the vent, which then causes the ambient sound to be properly disabled on the client. Neat!
+Когда клиент его получает (с учётом задержки), он вызывает событие `ComponentHandleState` для вентиля, что приводит к отключению звука на клиенте. Удобно!
 
-## Network Events
+## Сетевые события
 
-The other main way for the server and client to communicate, besides replication through component states, and that's **network events** and the lower-level `NetMessage`.
+Другим основным способом связи между сервером и клиентом, помимо репликации через состояния компонентов, являются **сетевые события** и более низкоуровневый механизм `NetMessage`.
 
-Network events are as opposed to local events (`RaiseLocalEvent` or `SubscribeLocalEvent` ring a bell?), which are exclusively 'local' to the side of the network they were raised on, whereas network events are exclusively sent over the network. Network events use the equivalent `RaiseNetworkEvent` and `SubscribeNetworkEvent`.
+Сетевые события противопоставляются локальным событиям (`RaiseLocalEvent` или `SubscribeLocalEvent`), которые происходят исключительно на одной стороне сети. В то время как сетевые события передаются исключительно по сети с использованием `RaiseNetworkEvent` и `SubscribeNetworkEvent`.
 
-Network events contain arbitrary data, not tied to any component or entity in specific (which means they can't be directed), and can be sent at any time, from either the client *or* the server. *When handling network event sent from the client on the server, you should obviously exercise caution and treat it as untrustworthy, since hackers can always send whatever data they please.*
+Сетевые события могут содержать произвольные данные, не связанные с каким-либо компонентом или сущностью, и могут быть отправлены в любой момент, как с клиента, так и с сервера. **Когда сервер обрабатывает сетевое событие, отправленное с клиента, следует проявлять осторожность и относиться к данным как к недостоверным, поскольку злоумышленники могут отправлять любые данные.**
 
-`NetMessage` is the low-level equivalent to network events (in fact, network events just create a `NetMessage` themselves). You should avoid using them unless you know what you're doing, so I won't cover them here besides mentioning them.
+`NetMessage` — это низкоуровневый эквивалент сетевых событий (фактически, сетевые события просто создают `NetMessage`). Избегайте его использования, если вы точно не знаете, что делаете, поэтому здесь я не буду его детально рассматривать.
 
-### Example
+### Пример
 
-Let's look at adminhelps (also called the *bwoink* system) and see how that sends arbitrary non-entity-specific data to clients.
+Рассмотрим пример с админхелпом (или системой *bwoink*), который отправляет произвольные данные клиентам.
 
-Here's how the network event is defined:
+Вот как определено сетевое событие:
+
+```csharp
+/// SharedBwoinkSystem.cs
+
+...
+    
+        [Serializable, NetSerializable]
+        public sealed class BwoinkTextMessage : EntityEventArgs
+
+
+
+
+Вот продолжение перевода:
+
+---
 
 ```csharp
 /// SharedBwoinkSystem.cs
@@ -176,24 +190,24 @@ Here's how the network event is defined:
         }
 ```
 
-Note that this is basically identical to a normal event data class--except, that its marked as `NetSerializable`, for the same reasons mentioned above for component states. I won't go over the specific data here--I imagine you get the idea.
+Обратите внимание, что это практически идентично обычному классу данных событий, за исключением того, что он помечен как `NetSerializable`, по тем же причинам, которые упоминались выше для состояний компонентов. Я не буду подробно останавливаться на конкретных данных здесь — думаю, вы понимаете суть.
 
-The interesting thing about this event is that its raised and handled on both the client *and* server. So, we'll look at those separately.
+Интересная особенность этого события заключается в том, что оно поднимается и обрабатывается как на клиенте, так и на сервере. Так что давайте рассмотрим их по отдельности.
 
-#### Client to Server
+#### От клиента к серверу
 
 ```csharp
 /// Content.Client ... BwoinkSystem.cs
 ...
         public void Send(NetUserId channelId, string text)
         {
-            // Reuse the channel ID as the 'true sender'.
-            // Server will ignore this and if someone makes it not ignore this (which is bad, allows impersonation!!!), that will help.
+            // Используем идентификатор канала как "настоящего отправителя".
+            // Сервер проигнорирует это, и если кто-то заставит его не игнорировать (что плохо, позволяет подделывать сообщения!!!), это поможет.
             RaiseNetworkEvent(new BwoinkTextMessage(channelId, channelId, text));
         }
 ```
 
-`Send` here is called whenever the BWOINK (tm) UI input text is entered on the client:
+`Send` вызывается всякий раз, когда в интерфейс BWOINK (tm) вводится текст:
 
 ```csharp
 /// BwoinkPanel.xaml.cs
@@ -209,16 +223,16 @@ The interesting thing about this event is that its raised and handled on both th
 ...
 ```
 
-Easy enough! The client types a message, presses enter, then the Bwoink system creates a network event out of its message and sends it to the server. Let's see how its handled on the server:
+Все просто! Клиент вводит сообщение, нажимает Enter, и система Bwoink создает сетевое событие из сообщения и отправляет его на сервер. Давайте посмотрим, как оно обрабатывается на сервере:
 
-#### Server Handling
+#### Обработка на сервере
 
-Okay the handler for this is a little big so I'll trim it down to the important bits:
+Обработчик этого события довольно объемный, поэтому я сокращу его до важного:
 
 ```csharp
 /// Content.Server ... BwoinkSystem.cs
 
-        // ok this is technically in shared and overriden on server/client but you get the idea for simplicity..
+        // это фактически в общем коде и переопределено на сервере/клиенте, но вы понимаете идею для простоты...
         public override void Initialize()
         {
             base.Initialize();
@@ -233,14 +247,14 @@ Okay the handler for this is a little big so I'll trim it down to the important 
             base.OnBwoinkTextMessage(message, eventArgs);
             var senderSession = (IPlayerSession) eventArgs.SenderSession;
 
-            // TODO: Sanitize text?
-            // Confirm that this person is actually allowed to send a message here.
+            // TODO: Санитизация текста?
+            // Убедитесь, что это лицо действительно имеет право отправлять сообщение здесь.
             var personalChannel = senderSession.UserId == message.ChannelId;
             var senderAdmin = _adminManager.GetAdminData(senderSession);
             var authorized = personalChannel || senderAdmin != null;
             if (!authorized)
             {
-                // Unauthorized bwoink (log?)
+                // Неавторизованный bwoink (лог?)
                 return;
             }
 
@@ -252,10 +266,10 @@ Okay the handler for this is a little big so I'll trim it down to the important 
 
             ...
             
-            // Admins
+            // Админы
             var targets = _adminManager.ActiveAdmins.Select(p => p.ConnectedClient).ToList();
 
-            // And involved player
+            // И вовлеченный игрок
             if (_playerManager.TryGetSessionById(message.ChannelId, out var session))
                 if (!targets.Contains(session.ConnectedClient))
                     targets.Add(session.ConnectedClient);
@@ -266,19 +280,17 @@ Okay the handler for this is a little big so I'll trim it down to the important 
             ...
 ```
 
-One thing you'll notice is the function signature here--network events arent entity-specific, again, so the only two args are the event itself, and the session that sent it (if this event is coming from the client!)
+Первое, что делает этот обработчик — проверяет, действительно ли клиент имеет право отправить это сообщение! Он проверяет, активен ли пользователь в текущем тикете или является ли он администратором. Просто. **Всегда проверяйте события, отправленные клиентом!**
 
-The first thing this handler does is the most important part--it figures out if the client is actually allowed to send this ahelp message! It does this by verifying that the player is actually in an active ticket, or that they're an admin. Simple enough. **Always verify events sent from the client!**
+Затем сообщение пересылается различным сторонам, чтобы они могли его увидеть. Сначала собираются все активные администраторы, затем добавляется игрок, участвующий в тикете, и сообщение отправляется обратно.
 
-The next thing it does is retransmit this message to various different parties, so that they can see it too. It first gets all active admins, then gets the active player in the current ticket, and sends the same message back to them.
+#### Обработка на клиенте
 
-#### Client Handling
-
-Let's go back to the client to see what it does with this new text message sent from the server.
+Теперь вернемся к клиенту, чтобы посмотреть, что он делает с новым текстовым сообщением, отправленным с сервера.
 
 ```csharp
 /// Content.Client ... BwoinkSystem.cs
-        // ok this is technically in shared and overriden on server/client but you get the idea for simplicity..
+        // это фактически в общем коде и переопределено на сервере/клиенте, но вы понимаете идею для простоты...
         public override void Initialize()
         {
             base.Initialize();
@@ -292,10 +304,10 @@ Let's go back to the client to see what it does with this new text message sent 
         {
             base.OnBwoinkTextMessage(message, eventArgs);
             LogBwoink(message);
-            // Actual line
+            // Визуализация сообщения
             var window = EnsurePanel(message.ChannelId);
             window.ReceiveLine(message);
-            // Play a sound if we didn't send it
+            // Проигрываем звук, если это сообщение не отправил текущий пользователь
             var localPlayer = _playerManager.LocalPlayer;
             if (localPlayer?.UserId != message.TrueSender)
             {
@@ -307,19 +319,14 @@ Let's go back to the client to see what it does with this new text message sent 
         }
 ```
 
-This ones easy to get, so I haven't trimmed it down at all. It first opens the ahelp window for the user, sends the line to the window so it can be visualized, and then plays the **Funny Sound** (if they didn't send it). No validation is done here (more or less), because we can trust the server to send accurate data to the client.
+Этот код довольно прост: он открывает окно ahelp, отправляет строку сообщения в окно для визуализации, а затем воспроизводит **Забавный звук** (если сообщение не было отправлено самим пользователем). Проверки здесь почти не нужны, потому что сервер может доверять данным, отправленным клиенту.
+
+---
 
 ## Potentially Visible Set (PVS)
 
-You've likely heard this term bandied about a bit if you've looked in development, as its a pretty big deal.
+Вы, вероятно, уже слышали термин "Potentially Visible Set" (PVS), если интересовались разработкой, так как это важная часть системы.
 
-Think for a second--there's a lot of god damn entities in this game! And most likely, a lot of them are calling `Dirty` constantly, and there's going to be a lot of clients too. How do we figure out how to send these states to each client? The answer is with the **Potentially Visible Set** system, or **PVS**.
+Подумайте на секунду: в игре очень много сущностей! И, скорее всего, многие из них постоянно вызывают `Dirty`, а клиентов тоже будет много. Как мы можем определить, какие состояния отправлять каждому клиенту? Ответ заключается в **системе Potentially Visible Set (PVS)**.
 
-This isn't going to be a super low-level overview of it or anything, but basically, **PVS** is based on chunks, and only sends component states to clients that are in chunk range of the entity. This is done for two main reasons:
-
-1) It reduces bandwidth by a lot, by not sending component states to clients that can't even see the entity in question.
-2) It reduces the possibility for cheating, since hackers physically don't receive any data about entities too far away from them.
-
-It's quite slow, but it's multithreaded and miles faster than the BYOND equivalent--fast enough to get us >250 players on 20 ticks-per-second, so it's good enough.
-
-As for what this means to you and your code, note that in testing you won't receive states for entities that are too far away, and you may need to think about the special case of what happens when entities go in and out of range, though you don't usually need to worry about it.
+Это не будет детальным объяснением на низком уровне, но по сути, **PVS** основан на "чанках" и отправляет состояния компонентов только тем клиентам, которые находятся в пределах видимости сущности.

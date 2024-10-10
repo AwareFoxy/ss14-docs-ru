@@ -1,5 +1,5 @@
-# Discord Rich Presence Repository
+# Репозитория статуса активности Discord (Rich Presence)
 
-## Custom Assets
+## Пользовательские настройки
 
-If you want to display custom assets like a server icon in Rich Presence, we must upload them to the Discord app assets. Please see [this repo](https://github.com/space-wizards/asset-dump/tree/master/discord-app-assets) for details.
+Если вы хотите отображать пользовательские настройки в Rich Presence, например, иконку сервера, их необходимо загрузить в настройки приложения Discord. Подробности см. в [этом репозитории](https://github.com/space-wizards/asset-dump/tree/master/discord-app-assets).

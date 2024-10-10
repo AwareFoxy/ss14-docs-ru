@@ -7,105 +7,102 @@ When changing these rules, please keep the following in mind:
  - If applicable, use "community" instead of "server". If rules are broken outside a server but in a community, the community would (usually) still end up being removed from the hub in its entirety. Communities can also set up multiple servers or set up new servers after their community has been removed from the hub.
 -->
 
-# Space Wizards Hub Rules
-This document specifies the rules that need to be followed when listing your community on our server hub[^hub]. We will try to be as transparent and reasonable as possible when enforcing these rules. If you are not sure whether something is allowed, or you think that something that is not allowed by the current rules should be allowed, feel free to contact us. We will clarify and possibly amend the rules.
+# Правила хаба Space Wizards
+Данный документ определяет правила, которые необходимо соблюдать при размещении информации о ваших серверах в нашем хабе[^hub]. Мы постараемся быть максимально прозрачными и разумными при соблюдении этих правил. Если вы не уверены в том, что что-то разрешено, или считаете, что что-то, что не разрешено текущими правилами, должно быть разрешено, не стесняйтесь обращаться к нам. Мы разъясним и, возможно, внесем изменения в правила.
 
-We may change these rules from time to time, for example to add clarifications. When we do, it will be announced on [the forum](https://forum.spacestation14.io/index.php?/forum/29-hub-administrative/).
+Мы можем время от времени изменять эти правила, например, вносить в них уточнения. Когда мы это сделаем, об этом будет объявлено на [форум](https://forum.spacestation14.io/index.php?/forum/29-hub-administrative/).
 
-[^hub]: effectively, the server browser in the launcher.
+[^hub]: По сути, лаунчер содержащий в себе сервера.
 
-## How These Rules Are Applied
+## Как применяются эти правила
 
-### Strike System
+### Система страйков
 
-Breaking some rules will lead to your community receiving one or more *strikes*. Strikes expire a year after their cause or causes are resolved. If you have **three or more active strikes**, your community will be permanently removed from the hub.
+Нарушение некоторых правил приведет к тому, что ваше сообщество получит один или несколько *страйков*. Срок действия страйков истекает через год после устранения их причины или причин. Если у вас есть **три или более активных страйка**, ваше сообщество будет навсегда удалено с хаба.
 
-You will be allowed to be relisted after enough strikes have expired to put you below three again. You must also have resolved the issue that caused the last strike. Contact us when this is the case, as we may not automatically relist you ourselves.
+Вы можете быть вновь включены в список после того, как количество страйков уменьшится. Вы также должны решить проблему, которая стала причиной последнего страйка. В этом случае свяжитесь с нами, так как мы не можем автоматически вернуть вас в список.
 
-### Scope of Rules
+### Область применения правил
 
-These rules apply to any communities that have at least one server listed on the server hub. Our jurisdiction is as far as to remove your server(s) from the hub, and nothing more. 
+Эти правила распространяются на все сообщества, в которых есть хотя бы один сервер, размещенный в серверном хабе. В нашу юрисдикцию входит удаление вашего сервера (-ров) из хаба, и не более того.
 
-We expect you to enforce some of these rules in other places than simply on-hub game servers. For example, 18+ rules may need to be enforced in your Discord or on any off-hub servers you have.
+Мы ожидаем, что некоторые из этих правил будут соблюдаться не только на серверах в хабе. Например, правила 18+ могут потребоваться в вашем Discord или на любых других серверах вне хаба.
 
-We draw the line at what encapsulates a **"community"** on a case-by-case basis. This is based on shared branding, community spaces (e.g. Discord), infrastructure, and staff. For example, if you are a host that merely provides infrastructure for another community you will get some degree of separation from said community. However, severe enough offenses may still make us come to you.
+В каждом конкретном случае мы определяем, что считать **"сообществом "**. Это основано на общем брендинге, пространстве сообщества (например, Discord), инфраструктуре и персонале. Например, если вы являетесь хостером, который просто предоставляет инфраструктуру другому сообществу, вы получите некоторую степень отделения от этого сообщества. Однако достаточно серьезные нарушения все же могут заставить нас обратиться к вам.
 
-When deciding whether an issue is your community's fault we will look at factors such as:
-- The status of the perpetrators in your community
-- The severity of the issue
-- Whether your community facilitates the issue or punished people for it.
+При решении вопроса о том, виновато ли в возникновении проблемы ваше сообщество, мы рассматриваем такие факторы, как:
+- Статус правонарушителей в вашем сообществе.
+- Серьезность проблемы.
+- Способствует ли ваше сообщество решению этой проблемы или наказывает людей за это.
 
-Some examples:
-- Not accountable: a random player trashtalking another server after being banned there.
-- Accountable: a staff member perpetuating lies about another server to the point it becomes an issue for them.
-- Accountable: harassment perpetuated by a large group of members, with staff aware but letting it happen.
+Некоторые примеры:
+- Без отчёта : случайный игрок негативно высказывается в сторону другого сервера после того как был забанен там.
+- С отчётом: сотрудник, говорящий ложь о другом сервере до такой степени, что это становится проблемой для них.
+- С отчётом:преследование, осуществляемое большой группой участнико сообщества, при этом сотрудники знают об этом, но позволяют этому происходить.
 
-### Enforcement Procedure
+### Процедура принудительного исполнения
 
-Depending on the scope and nature of the violation in question we will try to contact you privately and resolve things cleanly without a lasting strike. This depends on the kind offense in question and how cooperative you were to resolve the matter.
+В зависимости от масштаба и характера нарушения мы постараемся связаться с вами в лично и решить вопрос без наложения страйка. Это зависит от характера нарушения и от того, насколько активно вы работали над решением.
 
-If we do decide to hand out a strike, we expect you to resolve the problem within a reasonable timeframe. Failing this we may delist your server until the root problem is solved, regardless of total strikes remaining.
+Если мы все же примем решение о страйк, мы ожидаем, что вы решите проблему в разумные сроки. В противном случае мы можем удалить ваш сервер из списка до тех пор, пока не будет решена основная проблема, независимо от общего количества оставшихся страйков.
 
-We expect to be able to contact you about matters of the hub rules. You should have some form of **contact information** on your server: something as simple as a Discord or website link we can follow as a paper trail is good enough. If we are unable to contact you we may be forced to go immediately to delisting.
+Мы ожидаем, что сможем связаться с вами по вопросам, связанным с правилами хаба. На вашем сервере должна быть **контактная информация**: достаточно простой ссылки на Discord или веб-сайт, по которой мы можем проследить за ходом событий. Если мы не сможем связаться с вами, мы будем вынуждены немедленно перейти к удалению.
 
-## The Rules
+## Правила
 
-### Section 1 (high severity)
-These are the most important rules. Breaking one of them will lead to your community receiving up to three strikes at once. If you have a history of breaking these rules, that alone might be enough to disallow you from listing your server on the hub.
+### Раздел 1 (высокая степень тяжести)
+Это наиболее важные правила. Нарушение одного из них приведет к тому, что ваше сообщество получит до трех ударов одновременно. Если вы уже нарушали эти правила, одного этого может быть достаточно, чтобы запретить вам размещать свой сервер в хабе.
 
-**1.1 Do not harass, bully, brigade, defame, or doxx players, developers, or communities.**
-- Sharing IPs or hardware IDs with other server hosts for the purpose of banning is allowed.
-- Some guidance on what "harassment" constitutes: if somebody wants you to stop talking to or about them, you probably should.
+**1.1 Запрещается преследовать, запугивать, устраивать шантаж, клеветать или выставлять игроков, разработчиков или сообщества в невыгодном свете.**
+- Обмен IP или ID жёсткого диска с хостами других серверов с целью бана разрешен.
+- Некоторые рекомендации относительно того, что такое "преследование": если кто-то хочет, чтобы вы перестали говорить с ним или о нем, вы, вероятно, должны это сделать.
 
-**1.2. Do not attempt anything that is illegal in the United States of America.**
-- For example:
-	- network attacks such as distributed denial of service or unauthorized access,
-  - distribution of malware,
-  - phishing.
-- If applicable, we may report you to government authorities.
-- Security vulnerabilities can be reported to our security team by joining our Discord and pinging or talking to someone with the `@Wizard` or `@SS14 Maintainer` role. 
-- Do not violate software licences of other servers on the hub. This includes re-distributing the source code of secret repos or other license violations.
+**1.2. Не пытайтесь совершать действия, запрещенные в Соединенных Штатах Америки.**
+- Примеры:
+	- сетевые атаки, такие как DDoS или несанкционированный доступ,
+  - распространение вредоносных программ,
+  - Фишинг(Вид интернет-мошенничества, целью которого является получение доступа к конфиденциальным данным пользователей — логинам и паролям.).
+- В соответствующих случаях мы можем сообщить о вас в государственные органы.
+- Об уязвимостях в системе безопасности можно сообщить нашей команде безопасности, присоединившись к Discord и написав или обратившись к кому-либо с ролью `@Wizard` или `@SS14 Maintainer`.
+- Не нарушайте лицензии на программное обеспечение других серверов в хабе. Это включает в себя перераспространение исходного кода секретных репозиториев или другие нарушения лицензий.
 
-**1.3. Do not abuse the hardware or internet connection of players for purposes that are not directly related to playing the game or collecting telemetry, even with consent.**
-- For example, do not mine cryptocurrency using the players' hardware.
-- Redirecting the players' connection to another server you control or have permission to redirect to is allowed, as long as you have player consent.
+**1.3. Не злоупотреблять аппаратным обеспечением или интернет-соединением игроков в целях, не связанных непосредственно с игрой или сбором телеметрии, даже с их согласия.**
+- Например, не майнить криптовалюту на оборудовании игроков..
+- Перенаправление соединения игроков на другой сервер, который вы контролируете или имеете разрешение на перенаправление, разрешено при условии, что у вас есть согласие игроков.
 
-**1.4. Servers containing mature elements such as erotic roleplay MUST clearly be marked as being 18+.**
-- Do this by putting `[18+]` clearly in the server name somewhere.
+**1.4.Серверы, содержащие взрослый контент, такой как эротические ролевые игры, ДОЛЖНЫ быть четко обозначены как 18+**
+- Для этого в имени сервера необходимо указать `[18+]`.
 
-**1.5. If your server or community as a whole is 18+, you must do due diligence to remove underage players**
-- Age checks are not mandatory, though removing players if you learn they are underage is.
-- If you do not have mature themes (rule 1.4) and choose to mark your server as 18+ anyways, you still cannot make exceptions here.
+**1.5. Если ваш сервер или сообщество в целом имеют возраст 18+, вы должны предпринять все необходимые меры для удаления несовершеннолетних игроков**
+- Проверка возраста не является обязательной, однако удаление игроков, если вы узнали, что они не достигли совершеннолетия, является обязательным.
+- Если у вас нет зрелых тем (правило 1.4), но вы все равно решили пометить свой сервер как 18+, вы все равно не сможете сделать здесь исключения.
 
-**1.6. Server staff members must not have a record of grooming or other predatory behavior.**
-- This counts for all servers, not just exclusively 18+ servers.
+**1.6. Сотрудники сервера не должны иметь судимости за груминг или другое хищническое поведение.**
+- Это относится ко всем серверам, а не только к серверам 18+.
 
-**1.7. Do not send false information to the hub.**
-- For example, do not lie about player count or about what region your server is in.
+**1.7. Не отправляйте ложную информацию в хаб.**
+- Например, не лгите о количестве игроков или о том, в каком регионе находится ваш сервер.
 
-**1.8. Do not attempt to abuse loopholes in the hub rules or circumvent rulings**
-- For example: trying to circumvent strikes by making a "new" community. 
+**1.8. Не пытайтесь использовать лазейки в правилах хаба или обходить их**
+- Например: попытка обойти страйки путем создания "нового" сообщества.
 
-### Section 2 (medium severity)
-Breaking one of these rules will lead to your community receiving at most one strike.
+### Раздел 2 (средней тяжести)
+Нарушение одного из этих правил приведет к тому, что ваше сообщество получит не более одного страйка.
 
-**2.1. Keep your server names and descriptions clean**
-- They are visible to every player who uses the hub.
-- Keep it safe for work and free from vulgarity.
-- No bigotry, hate speech, discrimination, etc...
+**2.1. Следите за чистотой названий и описаний своих серверов**
+- Они видны каждому игроку, использующему хаб.
+- Обеспечьте безопасность для работы и отсутствие пошлости.
+- Никакого фанатизма, ненависти, дискриминации и т.д..
 
-**2.2. Do not impersonate other servers, developers, or organizations.**
-- If there is a reasonable way for players to be confused about the affiliations of your server, you're probably breaking this.
+**2.2. Не выдавайте себя за другие серверы, разработчиков или организации.**
+- Если существует разумная возможность того, что игроки могут запутаться в принадлежности вашего сервера, то вы, вероятно, нарушаете это правило.
 
-**2.3. Don't intentionally cause any sort of technical trouble for other communities, servers, the hub, or players.**
+**2.3. Не создавать намеренно технических проблем для других сообществ, серверов, хаба или игроков.**
 
 
-### Section 3 (low severity)
-Breaking these rules will not lead your community to receiving any strikes, unless they are repeatedly broken or not resolved within a reasonable timeframe.
+### Раздел 3 (низкая степень тяжести)
+Нарушение этих правил не приведет к тому, что ваше сообщество будет получать страйки, если только они не будут нарушаться неоднократно или не будут устранены в разумные сроки.
 
-**3.1. No advertising in the server name.**
-Server names are for describing a game, server, or community, and *not* for advertising unrelated services, causes, or other information.
-- For example:
-  - A name consisting of only "Hosted by XXX" is not allowed, because it is advertising a hosting service.
-  - A name such as "Foo Station | Now with new and improved X and Y | Running map Z" is allowed, because it describes Foo Station.
-- "Advertisements" as described in this rule *are* permitted in the server description (inside the foldout).
+**3.1. Имя вашего сервера не должно содержать никакой рекламы.**
+- Например, "Создано с помощью XXX".
+- Их разрешается указывать в описании сервера (внутри раскладки).
