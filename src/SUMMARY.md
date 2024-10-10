@@ -1,18 +1,18 @@
-Space Wizards Development Wiki
+Russian SS14 Dev Wiki
 =====================
 
 [The Robust Book](index.md)
 
-Meta
+Мета
 ====
 
 ----------------------
-- [Guide to Editing Docs](ru/meta/guide-to-editing-docs.md)
-- [Docs Example Page](ru/meta/docs-example-page.md)
-- [Docs are for Discoverability](ru/meta/docs-are-for-discoverability.md)
+- [Руководство по редактированию документации](ru/meta/guide-to-editing-docs.md)
+- [Пример страницы документации](ru/meta/docs-example-page.md)
+- [Документация для обнаружения](ru/meta/docs-are-for-discoverability.md)
 
-General Development
-===================
+Общая разработка
+================
 
 ----------------------
 
@@ -21,39 +21,38 @@ General Development
   - [Настройка среды разработки](ru/general-development/setup/setting-up-a-development-environment.md)
   - [Гит для игрока SS14](ru/general-development/setup/git-for-the-ss14-developer.md)
   - [Хостинг своего сервера](ru/general-development/setup/server-hosting-tutorial.md)
-- [Codebase Info](ru/general-development/codebase-info.md)
-  - [Conventions](ru/general-development/codebase-info/conventions.md)
-  - [Pull Request Guidelines](ru/general-development/codebase-info/pull-request-guidelines.md)
-  - [Codebase Organization](ru/general-development/codebase-info/codebase-organization.md)
-  - [Acronyms & Nomenclature](ru/general-development/codebase-info/acronyms-and-nomenclature.md)
-  - [SS14 Release Model](ru/general-development/codebase-info/releases.md)
-- [Tips](ru/general-development/tips.md)
-  - [Beginner FAQ](ru/general-development/tips/beginner-faq.md)
-  - [Troubleshooting FAQ](ru/general-development/tips/troubleshooting-faq.md)
-  - [Debugging Tools](ru/general-development/tips/debugging-tools.md)
-  - [PRs With Engine Changes](ru/general-development/tips/prs-with-engine-changes.md)
-  - [Writing Guidebook Entries](ru/general-development/tips/writing-guidebook-entries.md)
-  - [Config File Reference](ru/general-development/tips/config-file-reference.md)
-  - [YAML Crash Course](ru/general-development/tips/yaml-crash-course.md)
-- [Feature Proposals](ru/general-development/feature-proposals.md)
-  - [Feature Proposal Template](ru/templates/proposal.md)
-  - [Expected Team Decorum & Usage](ru/general-development/feature-proposals/expected-feature-proposal-decorum.md)
-- [Work Groups](ru/general-development/work-groups.md)
-- [Contributing Translations](ru/general-development/contributing-translations.md)
+- [Информация о кодовой базе](ru/general-development/codebase-info.md)
+  - [Конвенции](ru/general-development/codebase-info/conventions.md)
+  - [Руководство по запросам на добавление кода](ru/general-development/codebase-info/pull-request-guidelines.md)
+  - [Организация кодовой базы](ru/general-development/codebase-info/codebase-organization.md)
+  - [Акронимы и номенклатура](ru/general-development/codebase-info/acronyms-and-nomenclature.md)
+  - [Модель релизов SS14](ru/general-development/codebase-info/releases.md)
+- [Советы](ru/general-development/tips.md)
+  - [Часто задаваемые вопросы для новичков](ru/general-development/tips/beginner-faq.md)
+  - [Часто задаваемые вопросы по устранению неполадок](ru/general-development/tips/troubleshooting-faq.md)
+  - [Инструменты отладки](ru/general-development/tips/debugging-tools.md)
+  - [Запросы с изменениями в движке](ru/general-development/tips/prs-with-engine-changes.md)
+  - [Написание записей в руководстве](ru/general-development/tips/writing-guidebook-entries.md)
+  - [Справочник по файлам конфигурации](ru/general-development/tips/config-file-reference.md)
+  - [Краткий курс по YAML](ru/general-development/tips/yaml-crash-course.md)
+- [Предложения по функциям](ru/general-development/feature-proposals.md)
+  - [Шаблон предложения по функциям](ru/templates/proposal.md)
+  - [Ожидаемое поведение команды и использование](ru/general-development/feature-proposals/expected-feature-proposal-decorum.md)
+- [Рабочие группы](ru/general-development/work-groups.md)
+- [Вклад в перевод](ru/general-development/contributing-translations.md)
 
-SS14 By Example
+SS14 на примерах
 ===============
 
 ----------------------
 
 - [Введение в SS14 на примерах](ru/ss14-by-example/introduction-to-ss14-by-example.md)
-- [Добавляем простой хонкающий гудок](ru/ss14-by-example/adding-a-simple-bikehorn.md)
+- [Добавление простого клаксона](ru/ss14-by-example/adding-a-simple-bikehorn.md)
 - [Делаем спрайт динамическим](ru/ss14-by-example/making-a-sprite-dynamic.md)
   - [Перенос визуализаторов внешности](ru/ss14-by-example/making-a-sprite-dynamic/porting-appearance-visualizers.md)
 - [Основы работы в сети и вы](ru/ss14-by-example/basic-networking-and-you.md)
 - [Fluent и локализация](ru/ss14-by-example/fluent-and-localization.md)
 - [Руководство по выживанию в UI](ru/ss14-by-example/ui-survival-guide.md)
-
 
 Robust Toolbox
 ==============
@@ -61,88 +60,92 @@ Robust Toolbox
 ----------------------
 
 - [ECS](ru/robust-toolbox/ecs.md)
-- [Netcode]()
-  - [Net Entities](ru/robust-toolbox/netcode/net-entities.md)
-  - [Potentially Visible Set]()
-- [Coordinate Systems](ru/robust-toolbox/coordinate-systems.md)
-- [Transform]()
-  - [Entity Coordinates](ru/robust-toolbox/transform/entity-coordinates.md)
-  - [Physics](ru/robust-toolbox/transform/physics.md)
-  - [Grids](ru/robust-toolbox/transform/grids.md)
+- [Сетевой код]()
+  - [Сетевые сущности](ru/robust-toolbox/netcode/net-entities.md)
+  - [Потенциально видимый набор]()
+- [Системы координат](ru/robust-toolbox/coordinate-systems.md)
+- [Трансформация]()
+  - [Координаты сущностей](ru/robust-toolbox/transform/entity-coordinates.md)
+  - [Физика](ru/robust-toolbox/transform/physics.md)
+  - [Сетки](ru/robust-toolbox/transform/grids.md)
 - [Toolshed](ru/robust-toolbox/toolshed.md)
-  - [Types](ru/robust-toolbox/toolshed/types.md)
-  - [Toolshed and (S)CSI](ru/robust-toolbox/toolshed/toolshed-and-scsi.md)
-  - [Environments](ru/robust-toolbox/toolshed/environments.md)
-  - [Invocation contexts](ru/robust-toolbox/toolshed/invocation-contexts.md)
-  - [Commands](ru/robust-toolbox/toolshed/commands.md)
-    - [Entities](ru/robust-toolbox/toolshed/commands/entity-control.md)
-    - [General](ru/robust-toolbox/toolshed/commands/general.md)
-    - [Miscellaneous](ru/robust-toolbox/toolshed/commands/misc.md)
-  - [Toolshed Examples](ru/robust-toolbox/toolshed/toolshed-examples.md)
-- [User Interface](ru/robust-toolbox/user-interface.md)
+  - [Типы](ru/robust-toolbox/toolshed/types.md)
+  - [Toolshed и (S)CSI](ru/robust-toolbox/toolshed/toolshed-and-scsi.md)
+  - [Окружения](ru/robust-toolbox/toolshed/environments.md)
+  - [Контексты вызова](ru/robust-toolbox/toolshed/invocation-contexts.md)
+  - [Команды](ru/robust-toolbox/toolshed/commands.md)
+    - [Сущности](ru/robust-toolbox/toolshed/commands/entity-control.md)
+    - [Общие](ru/robust-toolbox/toolshed/commands/general.md)
+    - [Разное](ru/robust-toolbox/toolshed/commands/misc.md)
+  - [Примеры Toolshed](ru/robust-toolbox/toolshed/toolshed-examples.md)
+- [Пользовательский интерфейс](ru/robust-toolbox/user-interface.md)
 - [IoC](ru/robust-toolbox/ioc.md)
-- [Rendering]()
-  - [Lighting and FoV](ru/robust-toolbox/rendering/lighting-and-fov.md)
-  - [Shaders](ru/robust-toolbox/rendering/shaders.md)
-  - [Sprites and Icons](ru/robust-toolbox/rendering/sprites-and-icons.md)
-- [Serialization](ru/robust-toolbox/serialization.md)
-- [Sandboxing](ru/robust-toolbox/sandboxing.md)
-- [Content Manifests](ru/robust-toolbox/content-manifests.md)
-- [User Data Directory](ru/robust-toolbox/user-data-directory.md)
-- [Robust Modules](ru/robust-toolbox/robust-modules.md)
-- [Server HTTP API](ru/robust-toolbox/server-http-api.md)
-- [Build Configurations](ru/robust-toolbox/build-configurations.md)
-- [Preprocessor Defines](ru/robust-toolbox/preprocessor-defines.md)
+- [Отрисовка]()
+  - [Освещение и поле зрения](ru/robust-toolbox/rendering/lighting-and-fov.md)
+  - [Шейдеры](ru/robust-toolbox/rendering/shaders.md)
+  - [Спрайты и иконки](ru/robust-toolbox/rendering/sprites-and-icons.md)
+- [Сериализация](ru/robust-toolbox/serialization.md)
+- [Песочница](ru/robust-toolbox/sandboxing.md)
+- [Манифесты контента](ru/robust-toolbox/content-manifests.md)
+- [Каталог данных пользователя](ru/robust-toolbox/user-data-directory.md)
+- [Модули Robust](ru/robust-toolbox/robust-modules.md)
+- [HTTP API сервера](ru/robust-toolbox/server-http-api.md)
+- [Конфигурации сборки](ru/robust-toolbox/build-configurations.md)
+- [Определения препроцессора](ru/robust-toolbox/preprocessor-defines.md)
 - [MIDI](ru/robust-toolbox/midi.md)
-- [Automatic Client Zip (ACZ)](ru/robust-toolbox/acz.md)
-- [Asset Packaging](ru/robust-toolbox/asset-packaging.md)
-- [Publishing a new Robust Toolbox Version](ru/robust-toolbox/publishing-robusttoolbox.md)
+- [Автоматическое создание клиентского архива (ACZ)](ru/robust-toolbox/acz.md)
+- [Упаковка ресурсов](ru/robust-toolbox/asset-packaging.md)
+- [Публикация новой версии Robust Toolbox](ru/robust-toolbox/publishing-robusttoolbox.md)
 
 Space Station 14
 ================
 
 ----------------------
 
-- [Core Design](ru/space-station-14/core-design.md)
-  - [Design Principles](ru/space-station-14/core-design/design-principles.md)
+- [Основной дизайн](ru/space-station-14/core-design.md)
+  - [Принципы дизайна](ru/space-station-14/core-design/design-principles.md)
 
-- [Core Tech]()
-	- [PR Guidelines](ru/space-station-14/core-tech/guidelines.md)
+- [Основные технологии]()
+	- [Руководство по PR](ru/space-station-14/core-tech/guidelines.md)
 	
-	- [Destructible](ru/space-station-14/core-tech/destructible.md)
-	- [Construction](ru/space-station-14/core-tech/construction.md)
-	- [Node Networks](ru/space-station-14/core-tech/node-networks.md)
-	- [Displacement Maps](ru/space-station-14/art/displacement-maps.md)
-	- [Device Network](ru/space-station-14/core-tech/device-network.md)
-	- [NPCs](ru/space-station-14/core-tech/npcs.md)
-	- [Entity Tables](ru/space-station-14/core-tech/entity-tables.md)
-	- [Chemistry](ru/space-station-14/core-tech/chemistry.md)
-		- [Metabolism](ru/space-station-14/core-tech/chemistry/metabolism.md)
-		- [Reactions](ru/space-station-14/core-tech/chemistry/reactions.md)
-		- [Reagents](ru/space-station-14/core-tech/chemistry/reagents.md)
-		- [Solution Containers](ru/space-station-14/core-tech/chemistry/solution-containers.md)
+	- [Разрушаемые объекты](ru/space-station-14/core-tech/destructible.md)
+	- [Конструкция](ru/space-station-14/core-tech/construction.md)
+	- [Сетевые узлы](ru/space-station-14/core-tech/node-networks.md)
+	- [Карты смещения](ru/space-station-14/art/displacement-maps.md)
+	- [Сетевая структура устройств](ru/space-station-14/core-tech/device-network.md)
+	- [NPC](ru/space-station-14/core-tech/npcs.md)
+	- [Таблицы сущностей](ru/space-station-14/core-tech/entity-tables.md)
+	- [Химия](ru/space-station-14/core-tech/chemistry.md)
+		- [Метаболизм](ru/space-station-14/core-tech/chemistry/metabolism.md)
+		- [Реакции](ru/space-station-14/core-tech/chemistry/reactions.md)
+		- [Реагенты](ru/space-station-14/core-tech/chemistry/reagents.md)
+		- [Контейнеры растворов](ru/space-station-14/core-tech/chemistry/solution-containers.md)
 
-	- [Proposals]()
+	- [Предложения]()
 
-- [Accessibility](ru/space-station-14/accessibility.md)
-	- [PR Guidelines](ru/space-station-14/accessibility/guidelines.md)
+- [Доступность](ru/space-station-14/accessibility.md)
+	- [Руководство по PR](ru/space-station-14/accessibility/guidelines.md)
 	
-	- [Proposals]()
+	- [Предложения]()
 
-- [Admin Tooling](ru/space-station-14/admin-tools.md)
-	- [PR Guidelines](ru/space-station-14/admin-tools/guidelines.md)
+- [Инструменты для админов](ru/space-station-14/admin-tools.md)
+	- [Руководство по PR](ru/space-station-14/admin-tools/guidelines.md)
 		
-	- [Proposals]()
+	- [Предложения]()
 
-- [Art](ru/space-station-14/art.md)
-	- [PR Guidelines](ru/space-station-14/art/guidelines.md)
+- [Искусство](ru/space-station-14/art.md)
+	- [Руководство по PR](ru/space-station-14/art/guidelines.md)
 	
-	- [Proposals]()
+	- [Предложения]()
 
-- [Character/Species](ru/space-station-14/characters-species.md)
-	- [PR Guidelines](ru/space-station-14/character-species/guidelines.md)
-		
-	- [Proposals]()
+- [Персонажи и виды](ru/space-station-14/characters-species.md)
+	
+
+- [Руководство по PR](ru/space-station-14/characters-species/guidelines.md)
+	
+	- [Предложения]()
+
+
 
 - [Combat](ru/space-station-14/combat.md)
 	- [PR Guidelines](ru/space-station-14/combat/guidelines.md)
