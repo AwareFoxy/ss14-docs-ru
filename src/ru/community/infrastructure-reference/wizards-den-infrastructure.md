@@ -1,59 +1,67 @@
-# Wizard's Den Infrastructure
+# Инфраструктура сервера Wizard's Den
 
-This is a reference for how the official Wizard's Den game server infrastructure works. It may help you make educated decisions about hardware required or how to set up your infrastructure. This is not an endorsement of any technique or provider, it's just what we use.
+Это справочная информация о том, как работает официальная инфраструктура игрового сервера Wizard's Den. Надеемся это поможет вам принять обдуманное решение о необходимом оборудовании или о том, как настроить инфраструктуру своего сервера. Это не является рекламой или рекомендацией какой-либо техники или провайдера, лишь то, что мы используем.
 
-## Hardware
+## Железо
 
-If I don't list something like network bandwidth it's cuz I'm too lazy to check. You're not gonna run out, don't worry.
-
-### Moon
-
-Moon is our NEW central server. When done, it'll host all non-critical infrastructure and game server database and so on. Hosted by Hetzner in Germany. 
-
-Specs: (AX41-NVMe from Hetzner)
+Если я не указываю что-то вроде пропускной способности сети, то это потому, что мне лень проверять. Вам всего хватит, не волнуйтесь.
 
 ### Centcomm
 
-Centcomm is our OLD central server that hosts both the central SS14 infrastructure like authentication, aswell as Wizard's Den infrastructure like the game database, wiki, forum, etc... It is hosted in US East.
+Centcomm - это наш центральный сервер, на котором размещается центральная инфраструктура SS14, аутентификация, и инфраструктура Wizard's Den, база данных игры, вики, форум и т.д.. Он расположен на востоке США.
 
-Specs:
+Спецификация:
 * **CPU:** Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
 * **RAM:** 16 GB
 * **SSD:** 256 GB
 * **HDD:** 2 TB
 * **Network:** 150 TB bandwidth, gigabit
 
-This serves all CDN downloads and it comes up to less than 2 TB/month bandwidth.
+При этом обслуживаются все загрузки с CDN, и пропускная способность составляет менее 2 ТБ/мес.
 
 ### Lizard
 
-Hosts Wizard's Den Lizard and Wizard's Den Salamander in US West.
+Размещает в себе Wizard's Den Lizard и Wizard's Den Salamander на западе США.
 
-Specs:
+Спецификация:
 * **CPU:** AMD Ryzen 5 5600X 6-Core Processor
 * **RAM:** 16 GB
 * **SSD:** 256 GB
 * **Network:** 150 TB bandwidth, gigabit
 
-This is our most loaded server, and it comes out to 5 TB/month bandwidth max.
+Это наш самый нагруженный сервер, и его пропускная способность составляет не более 5 ТБ/мес.
+
+### Spider
+
+Домашний сервер PJB, поэтому используется совместно с некоторым не-SS14 хламом (кто-нибудь, пожалуйста, поиграйте со мной в Xonotic). Хостинг в Бельгии.
+
+Спецификация (Это просто древний ПК):
+* **CPU:** Intel(R) Core(TM) i5-3570K CPU @ 3.40GHz
+* **RAM:** 16 GB
+* **SSD:** 1 TB
 
 ### Miros
 
-Auctioned server rented from Hetzner, hosted in Germany.
+Аукционный сервер, арендованный у компании Hetzner, размещенный в Германии.
 
 * **CPU:** Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz
 * **RAM:** 64 GB
 * **SSD:** 512x2 GB (RAID 1)
 
+### Centipede
+
+На хостинге Austation в Австралии
+
+* **CPU:** 2 cores of an Intel(R) Xeon(R) E-2236 CPU @ 3.40GHz
+* **RAM:** 4 GB
+* **SSD:** 64 GB
+
 ### Noodle
 
-Noodle acts as a hypervisor and runs two separate systems, Leviathan and OpenDream1. Hosted in Miami.
+Noodle выступает в роли гипервайзера и обеспечивает работу двух отдельных систем - Leviathan и OpenDream1. Размещается в Майами.
 
 * **CPU:** AMD Ryzen 5 5600X 6-Core Processor
 * **RAM:** 64GB
 * **SSD:** 512 GB
 
-Each VM guest has 6 CPUs and 16 GB RAM assigned.
-
-
-
+Каждой гостевой ВМ выделено 6 процессоров и 16 Гбайт оперативной памяти.

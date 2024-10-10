@@ -1,59 +1,59 @@
-# Admin Tooling
+# Инструменты администрирования
 
-The admin tooling in SS14 is hopefully not too complicated, but some things could do with some explanation.
+Инструментарий администрирования в SS14 не слишком сложен, но некоторые вещи не помешало бы объяснить.
 
-## Admin Menu
+## Меню администрирования
 
 ![adminmenu.png](../../assets/images/admin/adminmenu.png)
 
 ---
 
-The Admin Menu can be opened by pressing F7, or using the button bar at the top.
+Меню администратора открывается нажатием клавиши F7 или с помощью панели кнопок в верхней части экрана.
 
-The *Admin* tab contains useful actions for general admin use.
+Вкладка *Admin* содержит полезные действия для общего использования.
 
-The *Adminbus* tab gives you control of many things--including spawning entities, tiles, or decals, as well as running/stopping station events.
+Вкладка *Adminbus* позволяет управлять многими действиями, в том числе создавать сущности, плитки или декали, а также запускать/останавливать события на станции.
 
-The *Atmos* tab lets you modify the atmos for the current grid. You shouldn't need to use this when regularly admining.
+Вкладка *Atmos* позволяет изменять атмосферу для текущей сетки. При регулярном администрировании она не нужна.
 
-The *Round* tab lets you control the flow of the current round. You can start, end, or restart the round using this menu. There are equivalent commands for all of these.
+Вкладка *Round* позволяет управлять ходом текущей смены. С помощью этого меню можно начать, закончить или перезапустить раунд. Для всего этого существуют эквивалентные команды.
 
-The *Server* tab lets you shutdown/restart the entire server, or toggle OOC/LOOC. This is only available to admins with the proper flags.
+Вкладка *Server* позволяет выключить/перезапустить весь сервер, а также переключить OOC/LOOC. Это доступно только администраторам с соответствующими флагами.
 
-The *Player* tab lets you view all of the players in a round. You can also toggle the **Player Overlay** here, which draws some basic information (ckey, character name, is antag) over all players in game.
+Вкладка *Player* позволяет просмотреть всех игроков в раунде. Здесь же можно включить **Player Overlay**, который отображает основную информацию (ckey, имя персонажа, есть ли тег antag) обо всех игроках в игре.
 
-## Verbs
+## Функции
 
-### Admin Verbs
+### Функции администрирования
 
 ![verbs.png](../../assets/images/admin/verbs.png)
 
 ---
-There are multiple admin verbs available. These are all fairly self-explanatory. *Message* opens the ahelp window targeted at the player, *Open Admin Notes* opens the user's notes. *Teleport Here/To* do as they say, and *Freeze* stops them from moving or interacting until they are unfrozen by an admin.
+Существует множество функций администрирования. Все они достаточно понятны. *Message* открывает окно помощи, адресованное игроку, *Open Admin Notes* открывает заметки пользователя. *Teleport Here/To* делает то, что сказано, а *Freeze* не дает игроку двигаться или взаимодействовать, пока он не будет разморожен администратором.
 
-### Debug Verbs
+### Функции отладки
 
 ![debug.png](../../assets/images/admin/debug.png)
 
 ---
 
-The debug verbs are primarily for debugging, but are also very useful for normal admins.
+Функции отладки предназначены в первую очередь для отладки, но также очень полезны для обычных администраторов.
 
-*Control mob* gives you control of the entity, if they are sentient.
+*Control mob* дает возможность контролировать сущность, если оная разумна.
 
-Not shown here, *Make sentient* makes an entity able to be controlled.
+На скриншоте нет примера, *Make sentient* делает сущность контролируемой.
 
-Not shown here, *Make ghost role* turns an entity into a controllable ghost role.
+На скриншоте нет примера, *Make ghost role* превращает сущность в управляемую роль призрака.
 
-*Delete* deletes an entity.
+*Delete* удаляет сущность.
 
-*Edit solutions* lets you modify the solutions and reagents on an entity, e.g. bloodstream, beaker contents, etc.
+*Edit solutions* позволяет изменять растворы и реагенты внутри сущности, например, химию в теле, содержимое мензурки и т.д.
 
-*Rejuvenate* fully heals an entity. Only use when you have to.
+*Rejuvenate* полностью исцеляет сущность. Используйте только в случае необходимости.
 
-*Set outfit* lets you change the attire/items that an entity is wearing. Useful for running events or respawning people.
+*Set outfit* позволяет изменить одежду/предметы, в которые одет объект. Полезно для проведения всяческих ивентов/событий или для возвращения людей в игру.
 
-**View variables** is a very, very useful tool that allows you to view all marked variables on every component that an entity has, as well as modify some. Useful for debugging, but also has great use for adminning as it allows you to add or remove arbitrary components, for example `OwOAccent`. Further explanation of how to use **View variables** (VV) is given below.
+**View variables** - очень, очень полезный инструмент, позволяющий просмотреть все отмеченные переменные каждого компонента, имеющегося у сущности, а также изменить некоторые из них. Полезен для отладки, но также очень удобен для администрирования, так как позволяет добавлять или удалять произвольные компоненты, например `OwOAccent`. Более подробное описание использования **View variables** (VV) приведено ниже.
 
 ### Smite Verbs
 
@@ -61,7 +61,7 @@ Not shown here, *Make ghost role* turns an entity into a controllable ghost role
 
 ---
 
-Use sparingly. Not all smites available are pictured here. All of these mess with someone's round severely in some way.
+Использовать в разумных пределах. Здесь показаны не все имеющиеся в наличии наказания. Все они в той или иной степени могут испортить чью-то смену.
 
 ## Admin Help
 
@@ -69,11 +69,12 @@ Use sparingly. Not all smites available are pictured here. All of these mess wit
 
 ---
 
-The **Admin Help** menu can be opened by pressing `Esc -> Admin Help`, by using the `Player Actions Panel` in the **Admin Menu**, or by using the `Message` admin verb.
+Меню **Admin Help** открывается нажатием клавиши `Esc -> Admin Help`, с помощью панели `Player Actions Panel` в меню **Admin Menu** или с помощью административного глагола `Message`.
 
-Select the player to message using the menu on the left. The 'sword' icon lets you know if they're an antagonist. It also shows their current character name as well as ckey.
+Выберите игрока для сообщения с помощью меню слева. Значок "меч" позволяет понять, является ли игрок антагонистом. Он также показывает текущее имя персонажа и его ckey.
 
-The *kick*, *ban*, *respawn*, and *teleport to* buttons at the bottom should be self explanatory. **Kick has no confirmation, so be careful.**
+
+Кнопки *kick*, *ban*, *respawn* и *teleport to* внизу должны быть понятны без дополнительных пояснений. **Кнопка ** Kick не имеет меню подтверждения, поэтому будьте осторожны с её использованием*.
 
 ## Admin Logs
 
@@ -81,125 +82,125 @@ The *kick*, *ban*, *respawn*, and *teleport to* buttons at the bottom should be 
 
 ---
 
-The admin logs menu shows you all interactions that have occurred during the round as well as which entities and players were involved. It can be opened in the *Admin* tab of the **Admin Menu**.
+Меню журналов администратора показывает все взаимодействия, произошедшие во время раунда, а также то, какие сущности и игроки в них участвовали. Оно открывается на вкладке *Admin* меню **Admin menu**.
 
-The far left menu lets you filter by log type. The second-from-the-left menu lets you filter by player/entity who was involved in the log. 
+Крайнее левое меню позволяет отфильтровать информацию по типу записи/логе. Второе слева меню позволяет отфильтровать по игрокам/существам, которые были задействованы в записи/логе. 
 
-The top left *Round* spinbox lets you change which round you're looking at, though this rarely needs to be done except for retroactive ahelps.
+Левая верхняя кнопка *Round* позволяет выбрать, какой раунд просмотреть, хотя это редко нужно делать, разве что для разборов в ретроспективе.
 
-You can filter by *log impact* at the top, though this is rarely needed if you know what you're looking for.
+Вверху можно отфильтровать по *log impact*, хотя это редко требуется, если вы знаете, что ищете.
 
-You can view the actual log data on the far right menu, and search for logs. If the log you're looking for doesn't show up, try hitting *refresh* (you'll likely need to do this when changing which player or log type you're looking for*. If it still doesn't show up, press *Next* and wait for a couple seconds.
+В правом крайнем меню можно просмотреть фактические данные записи/лога, а также выполнить поиск среди них. Если нужная запись/лог не отображается, попробуйте нажать кнопку *refresh* (скорее всего, это нужно делать при смене игрока или типа записи/лога). Если запись/лог по-прежнему не отображается, нажмите кнопку *Next* и подождите пару секунд.
 
-The *Pop out* button pops the log menu into a separate OS window. Useful for saving some space on your main monitor.
+Кнопка *Pop out* выводит меню журнала в отдельное окно ОС. Полезно для экономии места на основном мониторе.
 
-## Admin Notes
+## Заметки администратора
 
 ![notes.png](../../assets/images/admin/notes.png)
 
 ---
 
-Admin notes give admins a way to store information about a user when a ban would be too harsh of a punishment. Notes can be edited (and show their edit information), and can be deleted if the note is no longer relevant.
+Заметки администратора дают администраторам возможность хранить информацию о пользователе в тех случаях, когда бан был бы слишком суровым наказанием. Заметки можно редактировать (и показывать информацию о редактировании), а также удалять, если заметка больше не актуальна.
 
-Notes can be accessed using the `Admin` verb category, or at the bottom of the AHelp menu.
+Доступ к заметкам осуществляется через функцию `Admin` или в нижней части меню AHelp.
 
-## View Variables
+## Показать переменные (VV)
 
 ![vv.png](../../assets/images/admin/vv.png)
 
 ---
 
-A couple things to discuss about how SS14 works before the VV menu can really be useful to you:
+Прежде чем меню VV станет действительно полезным для вас, необходимо обсудить несколько моментов, связанных с работой SS14:
 
-- An 'entity' is an object in game--walls, players, projectiles, items, etc. Each entity has a unique `EntityUid` corresponding to them, which is the number `15199` you see at the top left next to the entity's name.
-- Each entity (generally) has a prototype ID, or which 'type' of entity it is. This is the `MobObserver` string you see at the top left.
-- Entities have **components**, which give some kind of behavior to the entity. The component for a 'player controlled' entity is `ActorComponent`, for a weapon it is `MeleeWeaponComponent`, for damageable objects it is `DamageableComponent`, etc. You can dynamically add and remove components whenever you want.
-- The game is separated into 'client' and 'server', with some shared stuff between them. Client is whats running on your computer, server is whats running on the game server, obviously.
+- Сущность" - это объект в игре - стены, игроки, снаряды, предметы и т.д. Каждой сущности соответствует уникальный `EntityUid` - число `15199`, которое вы видите слева вверху рядом с именем сущности.
+- У каждой сущности (как правило) есть ID прототипа, или того, к какому "типу" сущностей она относится. Это строка `MobObserver`, которую вы видите слева вверху.
+- У сущностей есть **components**, которые задают определенное поведение сущности. Компонентом для "управляемой игроком" сущности является `ActorComponent`, для оружия - `MeleeWeaponComponent`, для повреждаемых объектов - `DamageableComponent` и т.д. Вы можете динамически добавлять и удалять компоненты, когда захотите.
+- Игра разделена на "клиент" и "сервер" с некоторыми общими элементами между ними. Клиент - это то, что работает на вашем компьютере, сервер - то, что работает на игровом сервере.
 
-Most of the time, you'll want to view the **Server Components** list, as you can add/remove/modify components there and every client will see the effects.
+Чаще всего вы захотите просмотреть список **Server Components**, так как там можно добавлять/удалять/изменять компоненты, и эффект будет заметен на каждом клиенте.
 
-I recommend that you simply try and use the VV menu to get a feel for how it works. It's a little daunting, but it is very powerful.
 
-### VV Tips
+Я рекомендую вам просто попробовать использовать меню VV, чтобы понять, как оно работает. Оно пугает своим масштабом, однако в нём достаточно легко разобраться и оно очень мощное.
+### VV Подсказки
 
-- Press `enter` after modifying a variable to save it's value.
-- Some variables may look non-modifiable, but there may be a modifiable version of them farther down the list.
-- `TransformComponent` holds the entity's position, rotation, etc.
-- `Grids` (the station) are entities too, and their components can be changed
-- You can modify the `zoom` on the client-side `EyeComponent` to see farther.
-- `MindComponent` contains information like antag roles, jobs, objectives, etc.
-- An entity's name/description can be changed using `Server Variables`, or on the server-side `MetaDataComponent`.
-
-## Game Console
+- После изменения переменной нажмите `enter`, чтобы сохранить ее значение.
+- Некоторые переменные могут выглядеть немодифицируемыми, но дальше по списку может быть их модифицируемая версия.
+- `TransformComponent` хранит положение сущности, ее вращение и т.д.
+- `Grids` (станция) тоже являются сущностями, и их компоненты могут быть изменены
+- Чтобы видеть дальше, можно изменять `zoom` на стороне клиента `EyeComponent`.
+- `MindComponent` содержит такую информацию, как роли антагов, задания, цели и т.д.
+- 
+- Имя/описание сущности может быть изменено с помощью `Server Variables` или на стороне сервера `MetaDataComponent`.
+## Консоль
 
 ![console.png](../../assets/images/admin/console.png)
 
 ---
 
-The console can be opened using the tilde `~` key, unless rebound. Any player can open it, but I'm just mentioning it here in case you were unaware of that fact. Commands can be run by typing the command and then the arguments, like any shell. Important client logs will show up here as well, so it's useful for debugging.
+Консоль можно открыть с помощью клавиши тильда `~`, если вы не назначили иную. Открыть консоль может любой игрок, просто знайте об этом. Команды можно выполнять, набирая команду, а затем аргументы, как в любой оболочке. Важные логи клиента также будут отображаться здесь, так что это полезно для отладки.
 
-Use the `list` command to list all available commands, and the `help <command name>` command to view instructions for the command.
+Для просмотра списка всех доступных команд используйте команду `list`, а для просмотра инструкций к команде - команду `help <имя команды>`.
 
-### Useful Commands
+### Полезные команды
 
-| Command                                 | Description                                                                                             | Syntax                                                                     |
-|-----------                            |-----------                                                                                            |-----------                                                                |
-| `aghost`                               | Turn yourself into an admin ghost, or back again.             |                                                                                   |
-| `deadmin`                           | Lets you play the game without getting admin notifications. Always use before plaaying yourself.|   |
-| `readmin`                           | Returns all admin functions to the user after they `deadmin`. Not necessary to run upon joining.|   |
-| `help`                                   | Shows information about the specified command.                  | `help <keyword>`                                                   |
-| `list`                                  | Lists all commands in the game.                                               |                                                                                   |
-| `list <keyword>`              | Lists all commands with the specified keyword.                   | `list <keyword>`                                                     |
-| `quit`                                  | Closes the game.                                                                               |                                                                                      |
-| `adminwho`                          | List all admins online.                                                               |                                                                                   |
-| `togglehealthoverlay`   | Toggles a visual layer for the playerhealth.                       | `togglehealthoverlay <true/false>`               |
-| `scale`                                  | Make things bigger or smaller. Relative to current size (2 twice is the same as 4 once).| `scale <uid>`|
-| `adduplink`                       | Adds an uplink to a PDA and links it to the user.           | `adduplink <ckey> <pda uid>`                           |
-| `lsobjective`                      | Shows all objectives of the targeted player.                       | `lsobjective <ckey>`                                           |
-| `addobjective`                  | Adds an objective, requires the objective ID.                   | `addobjective <ckey> <objectiveID`               |
-| `rmobjective`                      | Removes an objective from the players mind.                       | `rmobjective <ckey> <number>`                       |
-| `fixgridatmos`                  | Resets all atmos on the grid to breathable and clean.   | `fixgridatmos <GRID_ID>` (use autofill)   |
-| `tpto`                                   | Teleport all targets to the first `<ckey/uid>` in the command.                                       | `tpto <ckey/uid> <ckey/uid> <ckey/uid>`          |
-| `tp`                                       | Teleports yourself to the coordinates on the specified map.                                           | `tp <X> <Y> <MAPID>`                                               |
-| `setmind`                           | Puts the player's soul into the ID (may require the entity to have a mind).               | `setmind <uid> <ckey>`                                           |
-| `customvote`                       | Creates a custom vote for all players, requires at least two choices. Always do this before running any important events.  | `customvote <title> <option1> <option2> ...`   |
-| `addhand`                           | Adds a hand to the entity, not all entities are supported, requires the "Hands" component in the entity.   | `addhand <uid>`       |
-| `adjstationjob`               | Adds or removes jobs. Can be used if a member of command leaves.                                   | `adjstationjob <STATION_ID> <job> <amount>` |
-| `addgamerule`                   | Adds the chosen game event to the game.                                                                                      | `addgamerule <gameruleName>`                               |
-| `endgamerule`                   | Removes the chosen gamerule frome the game. Usefull for repeating false events.   | `endgamerule <gameruleName>`                               |
-| `rename`                              | Correct way to rename a person (includes ID, PDA, and, cloner entries).                   | `rename <ckey/uid> <"FIRSTNAME LASTNAME">`  |
-| `setadminooc`                   | Changes the color of your adminchat while being an admin.                                               | `setadminooc <HEX Code>`                                       |
-|`addcomp`                                | Adds a component to an entity.                                                                                                        | `addcomp <uid> <component name>`                        |
-|`banlist`                                | List all bans for a user.                                                                                                                    | `banlist <ckey>`                                                        |
-|`dock`                                        | Tries to dock two docking airlocks together.                                                                            | `dock <airlock uid 1> <airlock uid 2>`            |
-|`forcemap`                                | Forces the next map to the given map.                                                                                            | `forcemap <map prototype id>`                                |
-|`forcepreset`                        | Forces the next game preset to the given preset.                                                                    | `forcepreset <preset prototype id>`                    |
-|`loadgamemap`                        | Loads a new game map into the given coordinates on the given map ID. Useful for impromptu nukies.|`loadgamemap <map prototype id> <mapid> <x> <y>`|
-|`vv`                                            | Open the view variables menu on an entity. Useful for VV-ing grids.                                | `vv <uid>`                                                                    |
+| Command                                 | Описание                                                                                                                                              | Синтаксис                                        |
+|-----------                            |-------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| `aghost`                               | Превращение в призрака-администратора или обратно.                                                                                                    |                                                  |
+| `deadmin`                           | Позволяет играть, не получая уведомлений в качестве администратора. Всегда используйте его перед тем, как сами захотите поиграть.                     |                                                  |
+| `readmin`                           | Возвращает все функции администратора пользователю после его `deadmin`. Не обязательно запускать при присоединении к серверу.                         |                                                  |
+| `help`                                   | Показывает информацию об указанной команде.                                                                                                           | `help <keyword>`                                 |
+| `list`                                  | Перечисляет все команды в игре.                                                                                                                       |                                                  |
+| `list <keyword>`              | Перечисляет все команды с указанным ключевым словом.                                                                                                  | `list <keyword>`                                 |
+| `quit`                                  | Закрывает игру.                                                                                                                                       |                                                  |
+| `adminwho`                          | Выдаёт список всех администраторов в сети (не показывает `deadmin`)                                                                                   |                                                  |
+| `togglehealthoverlay`   | Включает визуальный слой для здоровья игрока.                                                                                                         | `togglehealthoverlay <true/false>`               |
+| `scale`                                  | Делает вещи больше или меньше. Относительно текущего размера (написать 2 дважды - это то же самое, что написать 4 один раз).                          | `scale <uid>`                                    |
+| `adduplink`                       | Добавляет апинк к КПК и связывает его с пользователем.                                                                                                | `adduplink <ckey> <pda uid>`                     |
+| `lsobjective`                      | Показывает все цели выбранного игрока.                                                                                                                | `lsobjective <ckey>`                             |
+| `addobjective`                  | Добавляет цель, требует идентификатор цели.                                                                                                           | `addobjective <ckey> <objectiveID`               |
+| `rmobjective`                      | Удаляет цель игрока.                                                                                                                                  | `rmobjective <ckey> <number>`                    |
+| `fixgridatmos`                  | Сбрасывает все атмосистемы на решетке на чистые газы, которыми можно дышать.                                                                          | `fixgridatmos <GRID_ID>` (use autofill)          |
+| `tpto`                                   | Телепортирует все цели на первый `<ckey/uid>` в команде.                                                                                              | `tpto <ckey/uid> <ckey/uid> <ckey/uid>`          |
+| `tp`                                       | Телепортировать себя по координатам на указанной карте.                                                                                               | `tp <X> <Y> <MAPID>`                             |
+| `setmind`                           | Помещает душу игрока по идентификатору (может потребоваться, чтобы сущность обладала разумом).                                                        | `setmind <uid> <ckey>`                           |
+| `customvote`                       | Создает пользовательское голосование для всех игроков, требующее не менее двух вариантов ответа. Всегда делайте это перед проведением важных событий. | `customvote <title> <option1> <option2> ...`     |
+| `addhand`                           | Добавляет руку к сущности, поддерживаются не все сущности, требуется наличие компонента "Hands" в сущности.                                           | `addhand <uid>`                                  |
+| `adjstationjob`               | Добавляет или удаляет работу. Полезно в случае ухода одного из членов командования.                                                                   | `adjstationjob <STATION_ID> <job> <amount>`      |
+| `addgamerule`                   | Добавляет выбранное игровое событие в игру.                                                                                                           | `addgamerule <gameruleName>`                     |
+| `endgamerule`                   | Удаляет выбранный игровое событие из игры. Используется в случае если слишком часто происходит одно и то же событие, не вносящее разнообразие.        | `endgamerule <gameruleName>`                     |
+| `rename`                              | Правильный способ переименования человека (включает записи ID, PDA и информацию для клонирования).                                                    | `rename <ckey/uid> <"FIRSTNAME LASTNAME">`       |
+| `setadminooc`                   | Изменяет цвет вашего админчата, когда вы администратор.                                                                                               | `setadminooc <HEX Code>`                         |
+|`addcomp`                                | Добавляет компонент к сущности.                                                                                                                       | `addcomp <uid> <component name>`                 |
+|`banlist`                                | Список всех банов пользователя.                                                                                                                       | `banlist <ckey>`                                 |
+|`dock`                                        | Попытка состыковать два стыковочных шлюза.                                                                                                            | `dock <airlock uid 1> <airlock uid 2>`           |
+|`forcemap`                                | Выбирает следующую карту для запуска.                                                                                                                 | `forcemap <map prototype id>`                    |
+|`forcepreset`                        | Выбирает следующий режим для запуска.                                                                                                                 | `forcepreset <preset prototype id>`              |
+|`loadgamemap`                        | Загружает новую игровую карту в заданные координаты по заданному идентификатору карты. Пригодится для импровизированных Ядерных Оперативников.        | `loadgamemap <map prototype id> <mapid> <x> <y>` |
+|`vv`                                            | Открыть меню просмотра переменных на сущности. Полезно для редактирования VV в сетках.                                                                                   | `vv <uid>`                                       |
 
 
-## SS14.Admin
+## SS14.Админ
 
 ![ss14admin.png](../../assets/images/admin/ss14admin.png)
 
 ---
 
-If you're an official Space Wizards :tm: Admin, you can access the online admin panel at https://ss14-admin.spacestation14.com/. Log in using your SS14 account. Third-party servers can also set up this panel for themselves using the repository, so thats why this information is here and not secret.
+Если вы являетесь официальным администратором Space Wizards :tm: Admin, вы можете получить доступ к онлайн-панели администратора по адресу `central.spacestation14.io/admin`. Войдите в систему, используя свою учетную запись SS14. Сторонние серверы также могут настроить эту панель для себя, используя репозиторий, поэтому эта информация находится здесь и не является секретной.
 
-The *Bans* tab at the top is the most useful. This shows all current bans. You can search by active bans, or total bans, for any player. **This menu shows PII (personally identifying info) such as HWID and IP, so do not ever reveal this information to others.**
+Наиболее полезной является вкладка *Bans* в верхней части. Здесь отображаются все текущие баны. Вы можете искать по активным или общим банам для любого игрока. **В этом меню отображается PII (персональная идентификационная информация), такая как HWID и IP, поэтому никогда не раскрывайте эту информацию другим*.
 
-You can see the ban time, reason, and when it expires. You can also check *ban hits*, or whether someone attempted to join and was denied because of a ban, as well as what username/IP/HWID they tried to join with. Useful for detecting ban evaders. You can also unban users on this panel.
+Вы можете увидеть время бана, причину и срок его действия. Вы также можете проверить *ban hits*, то есть пытался ли кто-то присоединиться, но ему было отказано по причине бана, а также с каким именем пользователя/IP/HWID он пытался присоединиться. Полезно для обнаружения попыток обойти бан. На этой панели можно также разбанить пользователей.
 
-The *Players* tab just lets you search by username, IP, HWID, etc for any user. **Contains lots of PII, be careful.**
+Вкладка *Players* позволяет искать любого пользователя по имени пользователя, IP, HWID и т.д. **Содержит много PII, будьте осторожны*.
 
-The *Connections* tab shows you the most recent connections to the servers as well as information for each.
+Вкладка *Connections* показывает последние соединения с серверами, а также информацию по каждому из них.
 
-## Admin Ghost
+## Админ призрак
 
-Admin ghosts are special observer entities that take your ckeys name, have hands, can interact with any object ingame, and have all access. You can turn yourself into an aghost using the **Admin Menu** or by using the `aghost` command.
+Админ призраки - это специальные сущности-наблюдатели, которые принимают имя вашего ckey, имеют руки, могут взаимодействовать с любыми объектами в игре и обладают всеми возможностями. Превратить себя в призрака можно через меню **Admin Menu** или с помощью команды `aghost`.
 
-You can return to your initial body
+Вы можете вернуться в свое первоначальное тело
 
-## Deadmin / Readmin
+## Деадмин / Реадмин
 
-If you want to play the game normally, its recommended that you deadmin using the `deadmin` command. If you want to perform admin duties again, use the `readmin` command.
+Если вы хотите просто поиграть в игру, рекомендуется завершить работу администратора командой `deadmin`. Если вы хотите снова выполнять обязанности администратора, используйте команду `readmin`.
