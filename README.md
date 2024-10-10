@@ -1,6 +1,6 @@
 # Russian Space Wizards Development Wiki
 
-Кому лень пользоваться переводчиком
+Кому лень пользоваться переводчиком, сайт - [https://documentationss14.ru](https://documentationss14.ru)
 
 ## License
 
